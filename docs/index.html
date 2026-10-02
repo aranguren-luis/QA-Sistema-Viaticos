@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentación QA — ExpenseFlow</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #eef2f8;
+    color: #1e2a3a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .wrap { max-width: 640px; width: 100%; text-align: center; }
+  h1 { font-size: 24px; font-weight: 800; color: #0f2044; margin-bottom: 8px; }
+  .subtitle { font-size: 13px; color: #5a7090; margin-bottom: 32px; }
+  .cards { display: flex; flex-direction: column; gap: 14px; }
+  a.card {
+    display: block;
+    text-align: left;
+    background: #f5f6f8;
+    border: 1px solid #dde1e8;
+    border-radius: 10px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: #1e2a3a;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  a.card:hover { background: #ebedf1; border-color: #c7cdd8; }
+  a.card .card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  a.card .card-desc { font-size: 13px; color: #5a7090; }
+  .footer { margin-top: 32px; font-size: 12px; color: #9aa6b8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Documentación QA</h1>
+  <div class="subtitle">ExpenseFlow — Sistema de Gestión de Viáticos</div>
+  <div class="cards">
+    <a class="card" href="plan-de-pruebas.html">
+      <div class="card-title">Plan de Pruebas</div>
+      <div class="card-desc">Alcance, objetivos, estrategia y criterios de entrada/salida para las nuevas funcionalidades de ExpenseFlow (beneficios de hoteles, notificaciones, departamentos, presupuestos, importación masiva y más)</div>
+    </a>
+    <a class="card" href="casos-de-prueba.html">
+      <div class="card-title">Casos de Prueba</div>
+      <div class="card-desc">30 casos de prueba detallados (CP-01 a CP-30) en formato paso a paso, con resultado esperado/obtenido y observaciones por caso</div>
+    </a>
+    <a class="card" href="reporte-smoke-test.html">
+      <div class="card-title">Reporte Smoke Test</div>
+      <div class="card-desc">Ejecución de smoke test sobre 32 casos: 11 Correcto / 6 Fallido / 14 Bloqueado, incluyendo el hallazgo crítico de un 504 Gateway Timeout que bloqueó la creación de solicitudes</div>
+    </a>
+  </div>
+  <div class="footer">QA Engineering · Manual Testing · Test Case Design · Bug Triage</div>
+</div>
+</body>
+</html>

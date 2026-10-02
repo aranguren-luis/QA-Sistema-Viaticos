@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte Smoke Test - ExpenseFlow</title>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #eef2f8;
+    color: #1e2a3a;
+    line-height: 1.6;
+  }
+  .top-nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; gap: 4px; justify-content: center; flex-wrap: wrap;
+    background: #0f2044; padding: 10px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .top-nav-link {
+    color: #a5c8ff; text-decoration: none; font-size: 13px; font-weight: 600;
+    padding: 8px 18px; border-radius: 20px; transition: background 0.15s;
+  }
+  .top-nav-link:hover { background: rgba(165,200,255,0.15); }
+  .informe-content {
+    max-width: 1040px; margin: 32px auto; padding: 0 16px 40px;
+    color: #1e2a3a; font-size: 14px; line-height: 1.7;
+  }
+  .informe-content > h1 {
+    font-size: 26px; font-weight: 900; color: #0f2044; text-align: center;
+    margin: 8px 0 28px; padding-bottom: 16px; border-bottom: 3px solid #3b82f6;
+  }
+  .informe-content h2 {
+    font-size: 19px; font-weight: 800; color: #1e3a8a; margin: 36px 0 14px;
+    padding: 10px 16px; background: linear-gradient(135deg, #dbeafe 0%, #eef4ff 100%);
+    border-left: 4px solid #3b82f6; border-radius: 8px;
+  }
+  .informe-content h3 { font-size: 15px; font-weight: 700; color: #1e3a8a; margin: 22px 0 8px; }
+  .informe-content h4 { font-size: 13px; font-weight: 700; color: #3b5787; margin: 16px 0 6px; }
+  .informe-content p { margin: 10px 0; }
+  .informe-content ul, .informe-content ol { margin: 10px 0 10px 22px; }
+  .informe-content li { margin: 4px 0; }
+  .informe-content strong { color: #0f2044; }
+  .informe-content code {
+    background: #eef2f8; color: #b91c1c; padding: 1px 6px; border-radius: 4px;
+    font-family: "SF Mono","Fira Code","Cascadia Code",monospace; font-size: 12.5px;
+  }
+  .informe-content hr { border: none; border-top: 1px solid #dde4ef; margin: 28px 0; }
+  .informe-content a { color: #1e3a8a; }
+  .informe-content table {
+    width: 100%; border-collapse: collapse; margin: 14px 0 22px;
+    background: #fff; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 1px 8px rgba(30,58,138,0.07); font-size: 13px;
+  }
+  .informe-content th {
+    text-align: left; padding: 9px 14px; background: #f5f8ff; color: #1e3a8a;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px;
+    border-bottom: 2px solid #dde4ef;
+  }
+  .informe-content td { padding: 9px 14px; border-bottom: 1px solid #f0f4f9; vertical-align: top; }
+  .informe-content tr:last-child td { border-bottom: none; }
+  .informe-missing {
+    max-width: 1040px; margin: 32px auto; padding: 16px 20px; text-align: center;
+    background: #fff5f5; color: #c0392b; border-radius: 10px; font-size: 13px;
+  }
+  .footer { text-align: center; padding: 24px; font-size: 12px; color: #aaa; }
+
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a href="index.html" class="top-nav-link">Inicio</a>
+  <a href="plan-de-pruebas.html" class="top-nav-link">Plan de Pruebas</a>
+  <a href="casos-de-prueba.html" class="top-nav-link">Casos de Prueba</a>
+  <a href="reporte-smoke-test.html" class="top-nav-link">Reporte Smoke Test</a>
+</div>
+
+<div class="informe-content">
+<p><strong>INFORME DE PRUEBAS – EXPENSEFLOW</strong><strong> (</strong><strong>10</strong><strong>.4.2026)</strong></p>
+<p><strong>Objetivo de las pruebas</strong></p>
+<p>Verificar el correcto funcionamiento de los módulos que componen el sistema ExpenseFlow, asegurando que:</p>
+<p>Los flujos de creación, aprobación y cancelación de solicitudes operen según lo esperado.</p>
+<p>Los módulos administrativos (departamentos, usuarios, zonas, hoteles, tipos de trámite, presupuestos) permitan la gestión completa de los datos.</p>
+<p>Las integraciones (correos electrónicos, notificaciones push, sincronización con Profit) funcionen adecuadamente.</p>
+<p>Las validaciones de (fechas, rangos de calificación, campos obligatorios, filtrado) se apliquen correctamente.</p>
+<p><strong>Resumen de resultados</strong></p>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correcto</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Fallido</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Bloqueado</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Total, de casos</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Detalle de casos de prueba por módulo</strong></p>
+<p><strong>1. Login</strong></p>
+<p><strong>CP0</strong><strong>1</strong><strong> – Inicio de sesión exitoso</strong></p>
+<p><strong>Descripción:</strong> Verificar que un usuario registrado pueda iniciar sesión con credenciales válidas.</p>
+<p><strong>Precondiciones:</strong> Usuario registrado y cuenta activa. Credenciales: admin@admin.com / 123456</p>
+<p><strong>Pasos:</strong></p>
+<p>Acceder a https://expenseflow.example.com/admin/login</p>
+<p>Introducir correo electrónico y contraseña</p>
+<p>Hacer clic en "Entrar"</p>
+<p><strong>Resultado esperado:</strong> Redirección al Dashboard con contenido del perfil.</p>
+<p><strong>Resultado obtenido:</strong> Carga correctamente al Dashboard. La sesión se mantiene al cerrar la página inesperadamente indiferentemente si se tiene tildada o no la opción recuérdame. </p>
+<p><strong>Captura</strong><strong>:</strong> NA</p>
+<p><strong>Estado:</strong> Correcto</p>
+<p><strong>CP0</strong><strong>2</strong><strong> – Cierre de sesión (Logout)</strong></p>
+<p><strong>Descripción:</strong> Verificar que el botón "Salir" cierre la sesión y redirija al login.</p>
+<p><strong>Precondiciones:</strong> Usuario autenticado en el Dashboard.</p>
+<p><strong>Pasos:</strong></p>
+<p>Hacer clic en "Salir"</p>
+<p><strong>Resultado esperado:</strong> Desconexión y redirección a pantalla de login; no se puede volver al Dashboard con botón atrás.</p>
+<p><strong>Resultado obtenido:</strong><strong> </strong>Se realiza acción de logout, se observa “Alerta estas a punto de enviar una información no segura “.</p>
+<p><strong>C</strong><strong>aptura:</strong>  </p>
+<p><strong>Estado:</strong> Correcto</p>
+<p><strong>CP0</strong><strong>3</strong><strong> – Cambio de contraseña desde Dashboard</strong></p>
+<p><strong>Descripción:</strong> Verificar que el botón "Actualizar contraseña" despliegue el formulario correspondiente.</p>
+<p><strong>Precondiciones:</strong> Usuario autenticado.</p>
+<p><strong>Pasos:</strong></p>
+<p>En el Dashboard, hacer clic en "Actualizar contraseña"</p>
+<p><strong>Resultado esperado:</strong> Se muestra el formulario para actualizar la contraseña y validación de nueva contraseña debe ser exactamente 9 caracteres, incluir letras, números y símbolos. </p>
+<p><strong>Resultado obtenido:</strong> Funciona correctamente la validación de contraseña. </p>
+<p><strong>Captura</strong><strong>:</strong> NA</p>
+<p><strong>Estado:</strong> Correcto</p>
+<p>**
+<strong>**2. Administración – Aprobación de viáticos</strong></p>
+<p><strong>CP0</strong><strong>4</strong><strong>– Visualización de </strong><strong>KPIs</strong><strong> en Dashboard</strong></p>
+<p><strong>Descripción:</strong> Verificar que los indicadores "Aprobados", "Por aprobar" y "Rechazados" se muestren y redirijan correctamente.</p>
+<p><strong>Precondiciones:</strong> Usuario autenticado, existencia de solicitudes.</p>
+<p><strong>Pasos:</strong></p>
+<p>Observar los tres KPI en el Dashboard.</p>
+<p>Hacer clic en cada uno.</p>
+<p><strong>Resultado esperado:</strong> Los valores son visibles</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>Captura</strong><strong>:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP0</strong><strong>5</strong><strong> – Tabla de aprobación de viáticos (estados y exportación)</strong></p>
+<p><strong>Descripción:</strong> Validar que la tabla muestre los estados "Rechazados", "Cancelados", "Por aprobar analista" y "Aprobado por sup. y analista", y permita exportar a Excel.</p>
+<p><strong>Precondiciones:</strong> Usuario con permisos, solicitudes en diferentes estados.</p>
+<p><strong>Pasos:</strong></p>
+<p>Acceder a "Aprobación de viáticos"</p>
+<p>Observar opciones de filtro y tabla.</p>
+<p>Exportar selección múltiple a Excel.</p>
+<p><strong>Resultado esperado:</strong> Tabla correcta, exportación funcional.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>Captura</strong><strong>:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP0</strong><strong>6</strong><strong> – Detalle y observaciones de una solicitud</strong></p>
+<p><strong>Descripción:</strong> Verificar que al seleccionar un viático se muestren detalles y observaciones.</p>
+<p><strong>Precondiciones:</strong> Solicitudes cargadas en la tabla.</p>
+<p><strong>Pasos:</strong></p>
+<p>Hacer clic en un registro de la tabla de aprobación.</p>
+<p><strong>Resultado esperado:</strong> Se despliega el detalle con observaciones.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP0</strong><strong>7</strong><strong> – Filtros optimizados (múltiples supervisores, múltiples departamentos, Local/Foráneo, rango de fechas con hoy)</strong></p>
+<p><strong>Descripción:</strong> Validar que los filtros permitan selección múltiple y que el día de hoy se incluya en rangos.</p>
+<p><strong>Precondiciones:</strong> Usuario autenticado, solicitudes variadas.</p>
+<p><strong>Pasos:</strong></p>
+<p>Aplicar filtro por 2 supervisores.</p>
+<p>Aplicar filtro por 3 departamentos.</p>
+<p>Filtrar por "Foráneo".</p>
+<p>Filtrar fecha desde "hoy" hasta "hoy".</p>
+<p><strong>Resultado esperado:</strong> Los listados muestran las solicitudes correctas.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>3. Gestión</strong></p>
+<p><strong>3.1 Solicitud de viáticos</strong></p>
+<p><strong>CP0</strong><strong>8</strong><strong> – Creación completa de solicitud (flujo </strong><strong>wizard</strong><strong>)</strong></p>
+<p><strong>Descripción:</strong> Crear solicitud con zona, fechas, tipo de trámite, al menos un empleado y envío.</p>
+<p><strong>Precondiciones:</strong> Usuario logueado como solicitante.</p>
+<p><strong>Pasos:</strong></p>
+<p>Completar wizard (zona, fechas, tipo trámite).</p>
+<p>Agregar ≥1 empleado.</p>
+<p>Enviar.</p>
+<p><strong>Resultado esperado:</strong> Solicitud creada con estado "Por Aprobar Supervisor". Correo enviado a analista y supervisor.</p>
+<p><strong>Resultado obtenido:</strong>  504 Gateway Time-out </p>
+<p><strong>C</strong><strong>aptura:</strong> </p>
+<p><strong>Estado:</strong> Fallido</p>
+<p><strong>CP0</strong><strong>9</strong><strong> – Validación de fechas incorrectas (salida &gt; retorno)</strong></p>
+<p><strong>Descripción:</strong> Impedir envío cuando fecha de salida es posterior a fecha de retorno.</p>
+<p><strong>Precondiciones:</strong> Usuario autenticado.</p>
+<p><strong>Pasos:</strong></p>
+<p>Seleccionar fecha salida posterior a fecha retorno.</p>
+<p>Intentar enviar.</p>
+<p><strong>Resultado esperado:</strong> Validación impide envío. Mensaje de error claro en español.</p>
+<p><strong>Resultado </strong><strong>obtenido:</strong>NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP</strong><strong>10</strong><strong> – Cálculo automático de logística (alimentación, hospedaje, transporte)</strong></p>
+<p><strong>Descripción:</strong> Al crear solicitud con zona de costos predefinidos, se debe generar tabla de logística con tarifas.</p>
+<p><strong>Precondiciones:</strong> Zona con costos configurados.</p>
+<p><strong>Pasos:</strong></p>
+<p>Crear solicitud con zona que tiene costos predefinidos.</p>
+<p>Ver tabla de logística generada.</p>
+<p><strong>Resultado esperado:</strong> Alimentación/hospedaje/transporte calculados según tarifas.</p>
+<p><strong>Resultado obtenido:</strong> Bloqueado por falla en CP08</p>
+<p><strong>C</strong><strong>aptura:</strong> N/A</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP1</strong><strong>1</strong><strong> – Flujo de aprobación (</strong><strong>workflow</strong><strong>)</strong></p>
+<p><strong>Descripción:</strong> Validar transiciones de estado:</p>
+<p><strong>Precondiciones:</strong> Solicitud en estado correspondiente.</p>
+<p><strong>Pasos:</strong></p>
+<p><strong>Resultado esperado:</strong> Cada acción cambia el estado correctamente y envía notificaciones.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP1</strong><strong>2</strong><strong> – Valoración de hotel desde solicitud aprobada</strong></p>
+<p><strong>Descripción:</strong> Calificar hotel con estrellas (1-5) y observación.</p>
+<p><strong>Precondiciones:</strong> Solicitud aprobada y finalizada, asociada a un hotel.</p>
+<p><strong>Pasos:</strong></p>
+<p>Seleccionar estrellas </p>
+<p><strong>Resultado esperado:</strong> Calificación guardada</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP1</strong><strong>3</strong><strong> – Zona horaria (Hora Venezuela)</strong></p>
+<p><strong>Descripción:</strong> Las fechas registradas deben usar hora de Venezuela (-4 UTC).</p>
+<p><strong>Precondiciones:</strong> Crear solicitud a las 2:00 PM UTC (10:00 AM VET).</p>
+<p><strong>Pasos:</strong></p>
+<p>Crear solicitud.</p>
+<p><strong>Resultado esperado:</strong> Muestra formato correcto </p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>3.2 Reportes</strong></p>
+<p><strong>CP1</strong><strong>4</strong><strong> – Visualización de solicitudes por estado (sin aprobar, aprobadas, rechazadas)</strong></p>
+<p><strong>Descripción:</strong> El módulo Reportes debe mostrar tabla clasificada por pestañas.</p>
+<p><strong>Precondiciones:</strong> Solicitudes en diferentes estados.</p>
+<p><strong>Pasos:</strong></p>
+<p>Acceder a "Reportes".</p>
+<p>Clic en pestaña "Rechazados", etc.</p>
+<p><strong>Resultado esperado:</strong> Muestra solo solicitudes del estado seleccionado.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> 
+1. Mejorar redacción </p>
+<p><strong>Estado:</strong>  Bloqueado </p>
+<p><strong>3.3 Histórico de actualización de viáticos</strong></p>
+<p><strong>CP1</strong><strong>5</strong><strong> – Columnas del histórico</strong></p>
+<p><strong>Descripción:</strong> Verificar que la tabla muestre: autorizado por, modificación de status, fecha de actualización, fecha salida, fecha retorno, observaciones.</p>
+<p><strong>Precondiciones:</strong> Existen actualizaciones de solicitudes.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ir a "Histórico de actualización de viáticos".</p>
+<p><strong>Resultado esperado:</strong> Tabla con las columnas especificadas.</p>
+<p><strong>Resultado obtenido:</strong> Se muestra correctamente, con filtros aplicables.</p>
+<p><strong>Evidencia o captura:</strong> </p>
+<ol>
+<li>Mejorar redacción </li>
+</ol>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>3.4 Gastos de departamentos</strong>**
+Bloqueado **</p>
+<p><strong>4. Ajustes</strong></p>
+<p><strong>4.1 Departamentos</strong></p>
+<p><strong>CP1</strong><strong>6</strong><strong> – Visualización de tabla de departamentos</strong></p>
+<p><strong>Descripción:</strong> Mostrar código, departamento, supervisor y presupuesto total.</p>
+<p><strong>Precondiciones:</strong> Departamentos registrados.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ir a "Ajustes → Departamentos".</p>
+<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
+<p><strong>Resultado obtenido:</strong> Correcto.</p>
+<p><strong>C</strong><strong>aptura:</strong> 
+1. Mejorar redacción traducir</p>
+<p><strong>Estado:</strong> Correcto</p>
+<p><strong>CP1</strong><strong>7</strong><strong> – Creación de nuevo departamento</strong></p>
+<p><strong>Descripción:</strong> Crear departamento con código Profit, nombre, supervisor, presupuesto.</p>
+<p><strong>Pasos:</strong></p>
+<p>Clic en "Crear departamento".</p>
+<p>Ingresar datos.</p>
+<p>Guardar (opciones: Crear / Crear y crear otro / Cancelar).</p>
+<p><strong>Resultado esperado:</strong> Departamento creado y visible en listado.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>CP1</strong><strong>8</strong><strong> – Asignación de presupuesto (Budget) a un departamento</strong></p>
+<p><strong>Descripción:</strong> Desde edición del departamento, asignar monto presupuestario.</p>
+<p><strong>Precondiciones:</strong> Departamento existente.</p>
+<p><strong>Pasos:</strong></p>
+<p>Clic en "Crear Budget".</p>
+<p>Ingresar monto (ej. 500,000).</p>
+<p>Guardar.</p>
+<p><strong>Resultado esperado:</strong> Presupuesto asignado y actualizado en tabla.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>4.2 Tipo de trámites</strong></p>
+<p><strong>CP1</strong><strong>9</strong><strong> – Visualización de tabla de tipos de trámite</strong></p>
+<p><strong>Descripción:</strong> La tabla debe mostrar "Tipo de trámite" y "Fecha de creación".</p>
+<p><strong>Precondiciones:</strong> Tipos de trámite existentes.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ir a "Ajustes → Tipo de trámites".</p>
+<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
+<p><strong>Resultado obtenido:</strong> Tramite Creado correctamente </p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Correcto</p>
+<p><strong>CP</strong><strong>20</strong><strong> – Creación de nuevo tipo de trámite</strong></p>
+<p><strong>Descripción:</strong> Crear tipo de trámite con campos "Tipo de trámite" y "Traslado" (Local/Foráneo). Usar botones Create, Create &amp; create another, Cancel.</p>
+<p><strong>Precondiciones:</strong> Usuario con permisos.</p>
+<p><strong>Pasos:</strong></p>
+<p>Clic en "New tipo tramite".</p>
+<p>Completar "Tipo de Tramite<em>" y "Traslado</em>".</p>
+<p>Probar las 2 acciones de guardado.</p>
+<p><strong>Resultado esperado:</strong>  Validación de campos obligatorios. Al guardar, el registro aparece en el listado. La opción "Crear y crear otro" permite generar un nuevo trámite y restablece el formulario</p>
+<p><strong>Resultado obtenido:</strong> Correcto. Se creó trámite con Traslado "Foráneo" y "Local"</p>
+<p><strong>C</strong><strong>aptura:</strong> 
+1.Traducir alerta</p>
+<p><strong>Estado:</strong> Correcto (sugerencia: Agregar validación para evitar registros duplicados)</p>
+<p>**
+<strong>**4.3 Usuarios</strong></p>
+<p><strong>CP21 – Visualización de tabla de usuarios</strong></p>
+<p><strong>Descripción:</strong> La tabla debe mostrar cédula, nombre, apellido, empresa, departamento y rol.</p>
+<p><strong>Precondiciones:</strong> Usuarios registrados.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ir a "Ajustes → Usuarios".</p>
+<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
+<p><strong>Resultado obtenido:</strong> Correcto. Se sugiere agregar buscador.</p>
+<p><strong>C</strong><strong>aptura:</strong> 
+1. Traducir </p>
+<p><strong>Estado:</strong> Correcto</p>
+<p>**CP22 – Creación de usuario **</p>
+<p><strong>Descripción:</strong> Crear usuario con campos: Nombre<em>, Apellido</em>, Cédula, Rol, Empresa, Departamento<em>, Correo Electrónico, Contraseña</em>. Usar botones Create, Create &amp; create another, Cancel.</p>
+<p><strong>Precondiciones:</strong> Permisos de administración.</p>
+<p><strong>Pasos:</strong></p>
+<p>Clic en "Crear usuario".</p>
+<p>Completar todos los campos.</p>
+<p>Probar las tres acciones.</p>
+<p><strong>Resultado esperado:</strong> Usuario creado y visible en tabla; validación de campos obligatorios.</p>
+<p><strong>Resultado obtenido:</strong> &gt;504 Gateway Time-out</p>
+<p><strong>Captura</strong><strong>:</strong> </p>
+<p><strong>Estado:</strong> Fallido</p>
+<p><strong>CP2</strong><strong>3</strong><strong> – Crear nuevo rol</strong>
+• <strong>Descripción:</strong> Crear un nuevo rol de usuario desde el panel de administración (Ajustes → Roles).
+• <strong>Precondiciones:</strong> Usuario autenticado con permisos de administrador.
+• <strong>Pasos:</strong></p>
+<p>Navegar a Ajustes → Roles.</p>
+<p>Hacer clic en el botón “Crear rol” (o “Create”).</p>
+<p>Completar los campos obligatorios: Name<em> (ej. “QA”), Description</em> (ej. “ROL DE PRUEBA”).</p>
+<p>Hacer clic en el botón “Create” (o “Crear”).</p>
+<p>• <strong>Resultado esperado:</strong> El rol se crea exitosamente 
+• <strong>Resultado obtenido:</strong> Al intentar crear el rol, el sistema arroja error <em>Internal</em><em> Server Error</em>: “Select field [data.role_id] must have a [createOptionUsing()] closure set.” 
+• <strong>Captura:</strong> </p>
+<p><strong>CP2</strong><strong>4</strong><strong> – Edición de usuario</strong></p>
+<p><strong>Descripción:</strong> Modificar rol u otros campos de un usuario existente.</p>
+<p><strong>Pasos:</strong></p>
+<p>En listado, clic en "Edit".</p>
+<p>Modificar datos.</p>
+<p>Guardar.</p>
+<p><strong>Resultado esperado:</strong> Cambios guardados</p>
+<p><strong>Resultado obtenido:</strong> Correcto.</p>
+<p><strong>C</strong><strong>aptura:</strong> 
+pendiente verificar si los datos se están guardando correctamente en la tabla. </p>
+<p><strong>Estado:</strong> Correcto</p>
+<p><strong>CP2</strong><strong>5</strong><strong> – Validación de correo duplicado en creación de usuario</strong></p>
+<p><strong>Descripción:</strong> No permitir crear usuario con correo ya registrado.</p>
+<p><strong>Precondiciones:</strong> Existe usuario con correo admin@admin.com.</p>
+<p><strong>Pasos:</strong></p>
+<p>Crear nuevo usuario.</p>
+<p>Ingresar admin@admin.com en campo Correo.</p>
+<p>Intentar guardar.</p>
+<p><strong>Resultado esperado:</strong> Mensaje de error claro (ej. "El correo electrónico ya existe") y no se crea.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p><strong>4.4 Zonas</strong></p>
+<p><strong>CP2</strong><strong>6</strong><strong> – Visualización de tabla de zonas</strong></p>
+<p><strong>Descripción:</strong> La tabla debe mostrar "Zona" y "Fecha de creación".</p>
+<p><strong>Precondiciones:</strong> Zonas registradas.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ir a "Ajustes → Zonas".</p>
+<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
+<p><strong>Resultado obtenido:</strong> Internal Server Error status 500 </p>
+<p><strong>C</strong><strong>aptura:</strong> </p>
+<p><strong>Estado:</strong> Fallido</p>
+<p><strong>CP2</strong><strong>7</strong><strong> – Creación de nueva zona</strong></p>
+<p><strong>Descripción:</strong> Crear zona con nombre y descripción.</p>
+<p><strong>Pasos:</strong></p>
+<p>Clic en "Crear Zona".</p>
+<p>Completar "Zona" y "Descripción".</p>
+<p>Guardar.</p>
+<p><strong>Resultado esperado:</strong> Zona creada y visible en tabla; validación de campos obligatorios.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Bloqueado</p>
+<p>**4.5 Hoteles **</p>
+<p><strong>CP2</strong><strong>8</strong><strong> – Visualización de tabla de hoteles</strong></p>
+<p><strong>Descripción:</strong> La tabla debe mostrar zona, hotel, dirección y beneficios (con íconos sí/no).</p>
+<p><strong>Precondiciones:</strong> Hoteles registrados.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ir a "Ajustes → Hoteles".</p>
+<p><strong>Resultado esperado:</strong> Columnas correctas y beneficios visibles.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> Correcto</p>
+<p><strong>CP2</strong><strong>9</strong>**– Creación de hotel **</p>
+<p><strong>Descripción:</strong> Crear hotel con todos los campos: zona, datos generales, bancarios, beneficios Toggles (desayuno, wifi, etc.), tarifas.</p>
+<p><strong>Pasos:</strong></p>
+<p>Clic en "Crear lista de hoteles".</p>
+<p>Completar formulario.</p>
+<p>Guardar.</p>
+<p><strong>Resultado esperado:</strong> Hotel registrado, aparece en tabla con beneficios seleccionados.</p>
+<p><strong>Resultado obtenido:</strong> Correcto.</p>
+<p><strong>C</strong><strong>aptura:</strong> </p>
+<p><strong>Estado:</strong> Correcto</p>
+<p><strong>CP</strong><strong>30</strong><strong> – Edición de hoteles (activar/desactivar beneficios)</strong></p>
+<p><strong>Descripción:</strong> Modificar beneficios de un hotel existente y ver reflejo en tabla.</p>
+<p><strong>Pasos:</strong></p>
+<p>Editar un hotel.</p>
+<p>Activar un beneficio nuevo, desactivar uno existente.</p>
+<p>Guardar.</p>
+<p><strong>Resultado esperado:</strong> Guardar edición.</p>
+<p><strong>Resultado obtenido:</strong> Correcto, se sugiere que al editar y guardar los cambios  se regrese al listado de hoteles. actualmente no se cierra el formulario de edición. </p>
+<p><strong>Evidencia o captura:</strong> NA</p>
+<p><strong>Estado:</strong> Correcto </p>
+<p><strong>CP3</strong><strong>1</strong><strong> – Importación masiva de hoteles desde Excel</strong></p>
+<p><strong>Descripción:</strong> Subir archivo .xlsx con columnas correctas, revisar datos en wizard editable y confirmar importación.</p>
+<p><strong>Precondiciones:</strong> Archivo Excel válido.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ir a "Importar Hoteles".</p>
+<p>Subir archivo.</p>
+<p>Revisar y editar datos si es necesario.</p>
+<p>Confirmar.</p>
+<p><strong>Resultado esperado:</strong> Hoteles insertados en BD. Mensaje de error si columnas incorrectas.</p>
+<p><strong>Resultado obtenido:</strong> NA</p>
+<p><strong>C</strong><strong>aptura:</strong> NA</p>
+<p><strong>Estado:</strong> No ejecutado</p>
+<ul>
+<li>Inconsistencias de idioma </li>
+</ul>
+<p><strong>CP32 – Idioma de interfaz y mensajes</strong></p>
+<p><strong>Descripción:</strong> Recorrer todos los módulos y detectar  combinaciones inglés-español.</p>
+<p><strong>Pasos:</strong></p>
+<p>Ingresar a cada módulo (Login, Dashboard, Aprobación, Solicitud, Reportes, Histórico, Departamentos, Tipos de trámite, Usuarios, Zonas, Hoteles, Costo viáticos, Términos).</p>
+<p><strong>Resultado esperado:</strong>  textos en español, claro y consistente.</p>
+<p><strong>Resultado obtenido:</strong> Textos con idiomas mezclados.</p>
+<p><strong>C</strong><strong>aptura:</strong> </p>
+<p>**</p>
+<hr />
+<p><strong>**Estado:</strong> Fallido </p>
+<p>**</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong><em>*Re</em></strong><em>sumen  </em>***</p>
+<hr />
+<hr />
+<p><strong><em>*Error crítico 504 Gateway Time-</em></strong><em>out</em>*</p>
+<p>Impide la creación de solicitudes </p>
+<p>Bloquea toda la funcionalidad principal del sistema.</p>
+<p>**
+<strong>**Idioma inconsistente</strong></p>
+<p>Textos en inglés mezclados con español (botones, alertas, etiquetas).</p>
+<p>Ejemplo: “List”, “Create”, “New tipo tramite”, mensajes de alerta en inglés.</p>
+<p><strong>Elaborado por:</strong>  Luis Aranguren Analista QA 
+<strong>Fecha:</strong> 2026-04-10</p>
+</div>
+<div class="footer">ExpenseFlow QA Documentation</div>
+</body>
+</html>
