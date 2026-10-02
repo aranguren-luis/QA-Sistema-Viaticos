@@ -79,7 +79,8 @@
 </div>
 
 <div class="informe-content">
-<p><strong>Resumen de Casos de Prueba</strong>** Test de Regresión **</p>
+<h1>Casos de Prueba — ExpenseFlow (Test de Regresión)</h1>
+<p><strong>Resumen de Casos de Prueba — Test de Regresión</strong></p>
 <table>
 <thead>
 <tr>
@@ -101,7 +102,7 @@
 <td>2</td>
 </tr>
 <tr>
-<td>Total, de Casos</td>
+<td>Total de Casos</td>
 <td>30</td>
 </tr>
 </tbody>
@@ -116,22 +117,22 @@
 </thead>
 <tbody>
 <tr>
-<td>Nuevos campos de beneficios para hoteles (desayuno, almuerzo, cena, estacionamiento, etc.)</td>
+<td>Nuevos campos de beneficios para hoteles (desayuno, almuerzo, cena, estacionamiento, etc.)</td>
 <td>CP-23: Visualización de tabla de hoteles<br>CP-24: Creación de lista de hoteles (con toggles de beneficios)<br>CP-26: Edición de hotel: activar/desactivar beneficios</td>
 <td>Correcto</td>
 </tr>
 <tr>
-<td>Sistema de notificaciones por correo electrónico para aprobación de viáticos</td>
+<td>Sistema de notificaciones por correo electrónico para aprobación de viáticos</td>
 <td>CP-27: Envío de correo electrónico al crear solicitud de viático</td>
 <td>Bloqueado</td>
 </tr>
 <tr>
-<td>Sistema de feedback de hoteles (calificación por estrellas y observaciones)</td>
+<td>Sistema de feedback de hoteles (calificación por estrellas y observaciones)</td>
 <td>CP-29: Acceso al formulario de valoración de hotel desde solicitud aprobada</td>
 <td>Correcto (con observaciones)</td>
 </tr>
 <tr>
-<td>Nuevo sistema de departamentos (incluyendo integración con Profit)</td>
+<td>Nuevo sistema de departamentos (incluyendo integración con Profit)</td>
 <td>CP-11: Visualización de tabla de departamentos<br>CP-12: Creación de un nuevo departamento</td>
 <td>Correcto</td>
 </tr>
@@ -146,586 +147,2136 @@
 <td>Fallido</td>
 </tr>
 <tr>
-<td>Importación masiva de hoteles (asistente con archivo Excel)</td>
+<td>Importación masiva de hoteles (asistente con archivo Excel)</td>
 <td>CP-25: Carga masiva de hoteles desde archivo Excel</td>
 <td>Fallido</td>
 </tr>
 <tr>
-<td>Solución de zona horaria (hora de Venezuela)</td>
+<td>Solución de zona horaria (hora de Venezuela)</td>
 <td>—</td>
 <td>Correcto</td>
 </tr>
 <tr>
-<td>Mejoras visuales (nombre de quien aprueba, nombre del hotel en la tabla)</td>
+<td>Mejoras visuales (nombre de quien aprueba, nombre del hotel en la tabla)</td>
 <td>—</td>
 <td>Correcto</td>
 </tr>
 <tr>
-<td>Optimización de filtros (múltiples supervisores, múltiples departamentos, búsqueda por Local/Foráneo, inclusión del día de hoy en rangos de fecha)</td>
-<td>CP-09 Reportes</td>
+<td>Optimización de filtros (múltiples supervisores, múltiples departamentos, búsqueda por Local/Foráneo, inclusión del día de hoy en rangos de fecha)</td>
+<td>CP-09: Reportes</td>
 <td>Correcto (con observaciones)</td>
 </tr>
 </tbody>
 </table>
-<p>**Cuentas de Prueba **</p>
-<p>ANALIST1.</p>
-<p>qa.tester@example.com</p>
-<p>cuenta de prueba creada </p>
-<p>Solicitante@example.com</p>
-<p>supervisor@example.com ExpenseFlow#2026</p>
-<p>CP-01: <strong>Inicio de sesión exitoso en la plataforma de viáticos</strong>
-<strong>Descripción:</strong> Verificar que un usuario registrado pueda iniciar sesión correctamente en la plataforma utilizando credenciales válidas.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>El usuario debe estar previamente registrado y su cuenta debe estar activa.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Correo electrónico: Solicitante@example.com</p>
-<p>Contraseña: ExpenseFlow#2026</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Acceder a la URL https://expenseflow.example.com/admin/login.</p>
-<p>2. Introducir el correo electrónico </p>
-<p>3. Introducir la contraseña </p>
-<p>4. Hacer clic en el botón Entrar</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>El sistema permite el acceso y redirige al usuario al Dashboard mostrando el contenido correspondiente al perfil autenticado.</p>
-<p><strong>Resultado Obtenido:</strong> Carga correctamente al Dashboard </p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>**</p>
 <hr />
+<h2>Cuentas de Prueba</h2>
+<ul>
+<li>ANALIST1</li>
+<li>qa.tester@example.com (cuenta de prueba creada)</li>
+<li>Solicitante@example.com</li>
+<li>supervisor@example.com — Contraseña: ExpenseFlow#2026</li>
+</ul>
 <hr />
-<p><strong>La implementación actual no recuerda información relacionada con el correo y la contraseña, sino que mantiene la sesión actual suele confundir un poco.<br />
-El comportamiento esperado es que si se cierra inesperadamente y volver abrir se dirija directamente al Dashboard. se observa que. 
- La funcionalidad actual guarda la sesión al cerrar la página, independientemente de si la opción está activada o no.
-**
-</strong>CP-02: <strong>Visualización correcta de los </strong><strong>KPIs</strong><strong> en el Dashboard</strong><strong> / Datos Usuario</strong> 
-<strong>Descripción:</strong> Verificar que al acceder al Dashboard se muestren los indicadores KPI "Aprobados", "Por aprobar" y "Rechazados" y datos del usuario correctamente
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado en la plataforma y en la sección Dashboard.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Sesión iniciada con un usuario válido.</p>
-<p><strong>Pasos:</strong>
-1. Observar el área de indicadores KPI.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>Se visualizan los tres KPI: "Aprobados", "Por aprobar" y "Rechazados" con sus respectivos valores.</p>
-<p><strong>Resultado Obtenido:</strong>  Al realizar clic en los kpi rechazados , por abrobar redirige correctamente a la tabla para esos valores , lo cual no ocurre para aprobados , actualmente a  https://expenseflow.example.com/admin/aprobacion-viaticos?activeTab=Todos   pero debería ser 
-  . </p>
-<p><strong>Estado:</strong> Fallido
-<strong>Observaciones:</strong>NA</p>
-<p>Actual </p>
-<p>Esperado</p>
-<p>Las siglas del usuario son incorrectas: en lugar de tomar la primera letra del nombre y del apellido, está usando las dos primeras letras del nombre.</p>
-<p>CP-03: <strong>Visualización de gráfica histórica de viáticos por día</strong>
-<strong>Descripción:</strong> Validar que el Dashboard muestre una gráfica histórica de viáticos por día.
-Plataforma: Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado y ubicado en el Dashboard.</p>
-<p>** Datos de Prueba:**</p>
-<p>Sesión iniciada con historial de viáticos registrado.</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Ingresar al Dashboard.</p>
-<p>2. Buscar la sección "Histórico" y visualizar la gráfica de viáticos por día.</p>
-<p><strong>Resultado Esperado:</strong>
-Se muestra una gráfica con información histórica de viáticos clasificada </p>
-<p><strong>Resultado Obtenido:</strong>
-gráfica con información histórica de viáticos clasificada</p>
-<p><strong>Estado:</strong> Correcto
-<strong>Observaciones</strong>:NA</p>
-<p>CP-04: <strong>Funcionamiento del botón "Actualizar contraseña" en el Dashboard</strong>
-<strong>Descripción:</strong> Verificar que el botón "Actualizar contraseña" redirige o despliega el formulario para cambiar la contraseña del usuario.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado y ubicado en el Dashboard.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Usuario con perfil editable.</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Ingresar al Dashboard.</p>
-<p>2. Hacer clic en el botón "Actualizar contraseña".</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>Se muestra el formulario para actualizar la contraseña.</p>
-<p><strong>Resultado Obtenido:</strong>**
-**</p>
-<p>Se muestra el formulario para actualizar la contraseña.</p>
-<p><strong>Estado:</strong> Correcto
-<strong>Observaciones:</strong> NA</p>
-<p>CP-05: <strong>Funcionamiento del botón "Salir" (</strong><strong>Logout</strong><strong>) en el Dashboard</strong>
-<strong>Descripción:</strong> Verificar que el botón "Salir" cierre la sesión actual y redirija al usuario a la pantalla de inicio de sesión.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado y ubicado en el Dashboard.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Sesión iniciada.</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Ingresar al Dashboard.</p>
-<p>2. Hacer clic en el botón "Salir".</p>
-<p><strong>Resultado Esperado:</strong>**
-**</p>
-<p>El usuario es desconectado y llevado a la pantalla de login </p>
-<p><strong>Resultado Obtenido:</strong>**
-**</p>
-<p>El usuario es desconectado y llevado a la pantalla de login </p>
-<p><strong>Estado:</strong> correcto
-<strong>Observaciones:</strong></p>
-<p>Verificar que la sesión se cierre correctamente y que no se pueda volver al Dashboard con el botón de atrás del navegador.</p>
-<p>CP-06: <strong>Visualización de opciones de estado en la tabla de Aprobación de Viáticos</strong>
-<strong>Descripción:</strong> Verificar que la tabla de "Aprobación de Viáticos" muestre correctamente las opciones de estado: "Rechazados", "Cancelados", "Por aprobar analista" y "Aprobado por sup. y analista" y permita exportar los datos a Excel .
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos para acceder al módulo de aprobación de viáticos.</p>
-<p><strong>Datos de Prueba:</strong>**
-**</p>
-<p>Viáticos registrados previamente en diferentes estados.</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en la sección "Aprobación de viáticos" desde el menú principal.</p>
-<p>2. Observar la tabla y sus opciones de filtro o visualización.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>La tabla muestra correctamente los estados: "Rechazados", "Cancelados", "Por aprobar analista", "Aprobado por sup. y analista".</p>
-<p><strong>Resultado Obtenido:</strong>**
-**</p>
-<p>La tabla muestra correctamente los estados: "Rechazados", "Cancelados", "Por aprobar analista", "Aprobado por sup. y analista".</p>
-<p><strong>Estado:</strong> Correcto
-<strong>Observaciones:</strong>NA</p>
-<p>CP-07: <strong>Revisión de detalles y observaciones de una solicitud de viático</strong>
-<strong>Descripción:</strong> Validar que al seleccionar un viático de la tabla se muestren correctamente los detalles y las observaciones de la solicitud.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado.</p>
-<p>Viáticos cargados en la tabla.</p>
-<p><strong>Datos de Prueba:</strong>**
-**</p>
-<p>Un viático seleccionable con detalles y observaciones registrados.</p>
-<p><strong>Pasos:</strong>**
-**</p>
-<p>1. En la pantalla de tabla de aprobación de viáticos, hacer clic en algún registro de viático.</p>
-<p>2. Observar los detalles y el campo de observaciones de la solicitud.</p>
-<p><strong>Resultado Esperado:</strong>**
-**</p>
-<p>Se despliega  los detalles y observaciones específicos del viático seleccionado.</p>
-<p><strong>Resultado Obtenido:</strong>**
-**</p>
-<p>Se despliega  los detalles y observaciones específicos del viático seleccionado.</p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>NA</p>
-<p>CP-08: <strong>Creación exitosa de una solicitud de viáticos con todos los campos y opciones</strong>
-<strong>Descripción:</strong> Verificar que el usuario puede crear correctamente una solicitud de viáticos llenando todos los campos requeridos, utilizando los toggles de "Incluirme" y "Desea agregar más información", y cumpliendo con la restricción del campo de observaciones (máximo 50 caracteres para el resumen).
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado en la plataforma.</p>
-<p>Permisos para crear solicitudes de viático.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Solicitante: "Equipo Thomas"</p>
-<p>Tipo de trámite</p>
-<p>Fecha de salida</p>
-<p>Fecha de retorno</p>
-<p>Acompañante </p>
-<p>Incluirme: Toggle en "Sí"</p>
-<p>Observaciones/resumen </p>
-<p>Desea agregar más información: Toggle en "si"</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en la sección "Solicitud de viáticos" desde el menú principal.</p>
-<p>2. Hacer clic en el botón "Crear solicitud de viáticos".</p>
-<p>3. Llenar el formulario con la información indicada en los Datos de Prueba.</p>
-<p>4. Usar el toggle "Incluirme" y establecerlo en "Sí".</p>
-<p>5. Ingresar el resumen en observaciones, verificando que no exceda los 50 caracteres.</p>
-<p>6. Usar el toggle "Desea agregar más información" y establecerlo en "No".</p>
-<p>7. Guardar o enviar la solicitud.</p>
-<p><strong>Resultado </strong><strong>Esperado:</strong>La solicitud es creada exitosamente; se muestra un mensaje de confirmación y la solicitud aparece en la lista de solicitudes.</p>
-<p><strong>Resultado Obtenido:</strong>
-La solicitud es creada exitosamente; se muestra un mensaje de confirmación y la solicitud aparece en la lista de solicitudes.</p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong></p>
-<p>Al borrar el campo Tasa BCV debería visualizarse nuevamente , actualmente queda vacio o en 0  </p>
-<p>Para selector zona con opciones correspondientes a ciudades , la opción de hotel  se muestra vacía o opcional </p>
-<p>CP-9<strong>: Visualización de solicitudes de viáticos en el módulo de Reportes</strong>
-<strong>Descripción:</strong> Verificar que el módulo de Reportes muestre la tabla de solicitudes de viáticos clasificadas por estado: sin aprobar, aprobadas y rechazadas.</p>
-<p><strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado en la plataforma.</p>
-<p>Existencia de solicitudes de viáticos en los estados "sin aprobar", "aprobados" y "rechazados".</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Solicitudes de viáticos previamente registradas en distintos estados.</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en la sección "Reportes" desde el menú principal.</p>
-<p>2. Observar la tabla principal que contiene las solicitudes de viáticos.</p>
-<p><strong>Resultado Esperado:</strong>**
-**</p>
-<p>La tabla muestra, de manera diferenciada, las solicitudes de viáticos en estado "sin aprobar", "aprobados" y "rechazados", permitiendo visualizarlos correctamente.</p>
-<p><strong>Resultado Obtenido:</strong>**
-**</p>
-<p>La tabla muestra, de manera diferenciada, las solicitudes de viáticos en estado "sin aprobar", "aprobados" y "rechazados", permitiendo visualizarlos correctamente.</p>
-<p><strong>Estado:</strong> Correcto (Realizar ajuste en selectores)
-<strong>Observaciones:</strong>   Se observa selector selecciona 2 o 3 opciones a la vez 
-[enlace de grabación interno omitido]</p>
-<p>Jornada especial , Otros no aparecen en el filtrado  Tipo de tramite , unicamente para Local o Foraneo , la razón de ello explicado a los requerimientos es que se necesita  es filtrar por tipo de traslado , se sugiere agregar los otros tipos de tramites al filtrado o cambiar el label para evitar confusión . </p>
-<p>Filtrado Departamento , no aparece en la tabla
-CP-10: <strong>Visualización correcta del histórico de actualización de viáticos</strong>
-<strong>Descripción</strong>: Verificar que al ingresar en “Histórico de actualización de viáticos” se muestra una tabla con las columnas: autorizado por, modificación de status, fecha de actualización, fecha de salida, fecha de retorno y observaciones.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado en la plataforma.</p>
-<p>Existen registros de actualizaciones sobre solicitudes de viáticos en el sistema.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Actualizaciones de solicitudes de viáticos previamente realizadas por diferentes usuarios y con diferentes fechas/estados.</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en la sección "Histórico de actualización de viáticos" desde el menú principal.</p>
-<p>2. Visualizar la tabla que muestra el histórico de actualizaciones.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>La tabla se despliega correctamente y contiene las columnas: autorizado por, modificación de status, fecha de actualización, fecha de salida, fecha de retorno y observaciones.</p>
-<p><strong>Resultado Obtenido:</strong></p>
-<p>Se observa toda la información de los viáticos realizados y se aplica las opciones de filtro</p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>NA</p>
-<p>CP-11: <strong>Visualización de la tabla de departamentos en Ajustes</strong><strong>
-Descripción:</strong> Verificar que al ingresar a "Ajustes Departamentos" se muestre una tabla con las columnas: código, departamento, supervisor, y presupuesto total.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos de administración.</p>
-<p>Departamentos registrados previamente en el sistema.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Múltiples departamentos cargados con código, nombre, supervisor asignado y presupuesto total.</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en la sección "Ajustes Departamentos" desde el menú.</p>
-<p>2. Visualizar la tabla principal de departamentos.</p>
-<p><strong>Resultado Esperado:</strong>**
-**</p>
-<p>La tabla muestra correctamente las columnas: código, departamento, supervisor, y presupuesto total para cada registro.</p>
-<p><strong>Resultado Obtenido:</strong>**
-**</p>
-<p>La tabla muestra correctamente las columnas: código, departamento, supervisor, y presupuesto total para cada registro.</p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>NA</p>
-<p>CP-12: <strong>Creación de un nuevo departamento</strong><strong>
-Descripción:</strong> Verificar que el usuario puede crear un nuevo departamento llenando todos los campos requeridos mediante el formulario y usando las opciones de guardar.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos de creación.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Código Profit Interno: " DPTO-PRUEBA-01 "</p>
-<p>Nombre del departamento</p>
-<p>Supervisor</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en "Ajustes Departamentos".</p>
-<p>2. Hacer clic en el botón "Crear Departamento".</p>
-<p>3. Llenar los campos: Código Profit Interno y Nombre del departamento.</p>
-<p>4. Asignar supervisor de sede/área en el correspondiente campo.</p>
-<p>5. Elegir una de las opciones de guardar: "Crear", "Crear y crear otro" o cancelar la operación.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>Si se elige "Crear" o "Crear y crear otro", el departamento es registrado y aparece en la tabla; si se cancela, no se registra ningún dato.</p>
-<p><strong>Resultado Obtenido:</strong></p>
-<p>Se crea correctamente el  Departamento nuevo </p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>NA</p>
-<p>CP-13: <strong>Asignación de presupuesto (Budget) a un departamento desde edición</strong>
-<strong>Descripción:</strong> Verificar la funcionalidad de asignación de “Budget” o presupuesto específico a un departamento mediante el botón “crear Budget”.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permiso de edición sobre departamentos.</p>
-<p>Departamento previamente creado y visible en la tabla.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Monto a asignar: 500,000</p>
-<p><strong>Pasos:</strong></p>
-<p>1. En la tabla de departamentos, hacer clic en el botón "Crear Budget" para un departamento.</p>
-<p>2. Se despliega el campo "amount".</p>
-<p>3. Ingresar el monto deseado y confirmar con el botón "Crear".</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>El presupuesto es asignado exitosamente al departamento; se actualiza la información y muestra mensaje de éxito.</p>
-<p><strong>Resultado Obtenido:</strong></p>
-<p>Fallo al crear Budget</p>
-<p><strong>Estado:</strong> Fallido
-<strong>Observaciones:</strong>NA</p>
-<p>El campo “amount” no debe aceptar valores no numéricos o negativos.</p>
-<p>CP-14: <strong>Visualización de la tabla de tipo de trámites</strong><strong> – </strong><strong>Creacion</strong> 
-<strong>Descripción:</strong> Verificar que al ingresar a la sección "Tipo de trámites" se visualice una tabla con las columnas "Tipo de trámite" y "Fecha de creación".
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con acceso a la sección correspondiente.</p>
-<p>Existe al menos un tipo de trámite previamente registrado en el sistema.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Tipos de trámite de ejemplo: "Comisión", "Capacitación" (con sus fechas de creación).</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en la opción "Tipo de trámites" en el menú.</p>
-<p>2. Observar la tabla que se presenta en pantalla.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>La tabla muestra correctamente columnas para "Tipo de trámite" y "Fecha de creación" con datos válidos.</p>
-<p><strong>Resultado Obtenido:</strong></p>
-<p><strong>Estado:</strong> Correcto
-<strong>Observaciones:</strong> Se puede crear correctamente el trámite sin embargo se sugiere añadir una validación para evitar registros con tipo de tramite duplicado </p>
-<p>CP-15: <strong>Visualización de la tabla de usuarios</strong>
-<strong>Descripción:</strong> Verificar que al ingresar a la sección "Usuarios" se muestra una tabla con las columnas: cédula, nombre, apellido, empresa, departamento y rol.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos para ver usuarios.</p>
-<p>Usuarios registrados previamente en el sistema.</p>
-<p><strong>Datos de Prueba:</strong><strong>NA</strong><strong>
-</strong>Pasos:</p>
-<p>1. Hacer clic en "Usuarios" en el menú principal.</p>
-<p>2. Observar la tabla presentada en pantalla.</p>
-<p>Resultado Esperado:</p>
-<p>La tabla muestra correctamente los campos cédula, nombre, apellido, empresa, departamento y rol para cada usuario registrado.</p>
-<p>Resultado Obtenido:
-La tabla muestra correctamente los campos cédula, nombre, apellido, empresa, departamento y rol para cada usuario registrado.</p>
-<p>Estado: Correcto
-Observaciones:  Se propone Agregar buscador para los usuarios </p>
-<p>CP-16: <strong>Edición de usuario</strong>
-<strong>Descripción:</strong> Verificar que, al hacer clic para editar un usuario, se despliega un formulario donde se puede modificar rol e información<br />
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos administrador</p>
-<p>Usuario existente en el sistema.</p>
-<p>Datos de Prueba:NA</p>
-<p><strong>Pasos:</strong></p>
-<p>1. En la lista de usuarios, hacer clic en el botón de editar correspondiente.</p>
-<p>2. Guardar los cambios.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>Se actualiza la información del usuario y se refleja en la tabla.</p>
-<p><strong>Resultado Obtenido:</strong>**
-**</p>
-<p>Se actualiza la información del usuario y se refleja en la tabla.</p>
-<p><strong>Estado:</strong> Correcto
-<strong>Observaciones:</strong> NA</p>
-<p>CP-17: <strong>Creación de un usuario nuevo</strong>
-Descripción: Verificar que el formulario de creación de usuario permite ingresar todos los campos requeridos y crear uno o varios usuarios, o cancelar sin guardar.
- Plataforma: Web
-Precondiciones:</p>
-<p>Usuario autenticado con permiso para crear usuarios.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Nombre: “Luis”</p>
-<p>Apellido: “Gómez”</p>
-<p>Cédula: “45678901”</p>
-<p>Rol: “Operador”</p>
-<p>Empresa: “BetaCorp”</p>
-<p>Departamento: “Logística”</p>
-<p>Email: “luis.gomez@betacorp.com”</p>
-<p>Contraseña: “LuisGomez2026*”</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en “Usuarios”.</p>
-<p>2. Hacer clic en el botón “Crear usuario”.</p>
-<p>3. Completar todos los campos del formulario según los datos de prueba.</p>
-<p>4. Probar las siguientes opciones:</p>
-<p>a) Hacer clic en “Crear”.
-  b) Hacer clic en “Crear y crear otro”.
-  c) Hacer clic en “Cancelar”.
-<strong>Resultado Esperado:</strong> El usuario se agrega y aparece en la tabla.</p>
-<p><strong>Resultado Obtenido:</strong> El usuario se agrega y aparece en la tabla.<strong>
-</strong><strong>Estado:</strong> Correcto
-<strong>Observaciones:</strong>NA</p>
-<p>CP-18: <strong>Creación de nuevo rol específico por parte de </strong><strong>un Usuario</strong><strong> </strong><strong>admin</strong><strong>
-Descripción:</strong> Validar que un usuario con rol “admin” pueda acceder al formulario de creación de rol y guardar exitosamente. 
-<strong>Plataforma:</strong> Web.
-<strong>Precondiciones:</strong></p>
-<p>Usuario con rol “Super Usuario” ha iniciado sesión en el sistema.</p>
-<p>Pasos:</p>
-<p>En el menú lateral, ir a Ajustes &gt; Usuarios.</p>
-<p>Hacer clic en el botón + Agregar Nuevo (o “Crear”).</p>
-<p>Hacer clic en el botón Crear (o Crear y crear otro según se requiera).</p>
-<p>Observar el mensaje de éxito y verificar el nuevo rol en el listado.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>Al hacer clic en “Crear”, se guarda el nuevo rol correctamente y se muestra un mensaje </p>
-<p><strong>Resultado Obtenido:</strong> Alerta de error 
-<strong>Estado:</strong> Fallido
-<strong>Observaciones:</strong> La aplicación se rompe, no existe alerta de error </p>
-<p>CP-19: <strong>Importación masiva de usuarios desde archivo Excel</strong>
-<strong>Descripción:</strong> Verificar que la funcionalidad de importación de usuarios a través de un archivo Excel permite cargar correctamente nuevos usuarios, revisar y editar antes de confirmar la importación.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos para importación.</p>
-<p>Archivo Excel válido con datos de usuarios estructurados correctamente.</p>
-<p><strong>Datos de Prueba:</strong> Template Excell con campos para la creación de usuario</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en “Usuarios”.</p>
-<p>2. Hacer clic en el botón “Import”.</p>
-<p>3. Seleccionar el archivo “usuarios_import.xlsx”.</p>
-<p>4. Hacer clic en “Siguiente”.</p>
-<p>5. Revisar la previsualización; editar registros si es posible.</p>
-<p>6. Confirmar la importación.</p>
-<p><strong>Resultado Esperado:</strong><strong> </strong>Recepción de correo </p>
-<p><strong>Resultado Obtenido:</strong><strong> </strong>NA
-<strong>Estado:</strong> Bloqueado
-<strong>Observaciones:</strong><strong> </strong>No se ah implementado , no se cuenta con plantilla de Excel en especifico
- </p>
-<p>CP-20: <strong>Creación de un nuevo tipo de trámite</strong>
-<strong>Descripción:</strong> Validar que el usuario puede crear un nuevo tipo de trámite a través del formulario correspondiente, y que el nuevo tipo de trámite aparece luego en la tabla.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos </p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Tipo de trámite: “Prueba”</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en "Tipo de trámites" en el menú.</p>
-<p>2. Hacer clic en el botón "Crear tipo de trámite".</p>
-<p>3. Llenar el campo Tipo de trámite, seleccionar Traslado Foraneo o local </p>
-<p>4. Guardar la información.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>El nuevo tipo de trámite se guarda correctamente y es visible en la tabla junto con la fecha de creación.</p>
-<p><strong>Resultado Obtenido:</strong></p>
-<p>El nuevo tipo de trámite se guarda correctamente y es visible en la tabla junto con la fecha de creación.</p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>NA</p>
-<p>CP-21: <strong>Visualización de la tabla de zonas</strong>
-<strong>Descripción:</strong> Verificar que al hacer clic en la opción "Zonas" se muestra una tabla con las columnas "Zona" y "Fecha de creación".
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con acceso a la sección.</p>
-<p>Al menos una zona registrada previamente en el sistema.</p>
-<p><strong>Datos de Prueba:</strong>NA</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en el menú “Zonas”.</p>
-<p>2. Observar la tabla presentada.</p>
-<p><strong>Resultado Esperado:</strong><strong> </strong>La tabla muestra correctamente las columnas "Zona" y "Fecha de creación" con datos válidos y correctamente alineados.</p>
-<p><strong>Resultado Obtenido:</strong><strong> </strong>La tabla muestra correctamente las columnas "Zona" y "Fecha de creación" con datos válidos y correctamente alineados.</p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>NA</p>
-<p>CP-22: <strong>Creación de una nueva zona</strong>
-<strong>Descripción:</strong> Validar que al hacer clic en el botón “Crear Zona” se despliega el formulario con los campos requeridos, y que es posible crear una zona llenando los campos y usando las opciones de guardar.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permisos de creación para esta sección.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Zona: "Prueba"</p>
-<p>Descripción: "Prueba"</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en “Zonas”.</p>
-<p>2. Hacer clic en el botón “Crear Zona”.</p>
-<p>3. Completar los campos: Zona y Descripción.</p>
-<p>4. Hacer clic en “Crear”.</p>
-<p><strong>Resultado Esperado:</strong> La zona es creada correctamente y aparece en la tabla de zonas.</p>
-<p><strong>Resultado Obtenido:</strong> La zona es creada correctamente y aparece en la tabla de zonas.</p>
-<p><strong>Estado:</strong> Correcto
-<strong>Observaciones:</strong></p>
-<p>Verificar la validación de campos obligatorios, mensajes de éxito y correcto refresco en la tabla.</p>
-<p>CP-23: <strong>Visualización de la tabla de hoteles</strong><strong>
-</strong><strong>Descripción:</strong> Verificar que al hacer clic en la sección “Hoteles” se despliega una tabla con las columnas: zona, hotel, dirección y beneficios.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado </p>
-<p>Al menos un hotel registrado en el sistema.</p>
-<p><strong>Datos de Prueba:</strong> NA
-<strong>Pasos:</strong></p>
-<p>1. Hacer clic en "Hoteles" en el menú principal.</p>
-<p>2. Observar la tabla desplegada.</p>
-<p><strong>Resultado Esperado:</strong> La tabla muestra correctamente los campos de zona, hotel, dirección y beneficios para cada registro disponible.</p>
-<p><strong>Resultado Obtenido:</strong> La tabla muestra correctamente los campos de zona, hotel, dirección y beneficios para cada registro disponible.
-<strong>Estado:</strong> correcto
-<strong>Observaciones:</strong>NA</p>
-<p>CP-24: <strong>Creación de lista de hoteles</strong> 
-<strong>Descripción:</strong> Validar que al hacer clic en “Crear lista de hoteles” se despliega un formulario con todos los campos requeridos, incluyendo selección de zona, datos generales, bancarios, beneficios (toggles), tarifas y otros detalles, y que el registro se completa exitosamente.
-<strong>Plataforma:</strong> Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado con permiso </p>
-<p>Zonas previamente registradas para selección.</p>
-<p><strong>Datos de Prueba:</strong></p>
-<p>Zona</p>
-<p>Nombre hotel</p>
-<p>Razón social</p>
-<p>Dirección</p>
-<p>Número de teléfono</p>
-<p>Número local</p>
-<p>Datos bancarios</p>
-<p>Beneficios</p>
-<p>Tarifas</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Hacer clic en “Hoteles”.</p>
-<p>2. Hacer clic en “Crear lista de hoteles”.</p>
-<p>3. Desplegar y completar todos los campos del formulario </p>
-<p>4. Hacer clic en el botón “Crear”.</p>
-<p><strong>Resultado </strong><strong>Esperado:</strong> El hotel se registra correctamente y aparece en la tabla general, mostrando todos los campos, incluidas las tarifas y beneficios seleccionados.</p>
-<p><strong>Resultado Obtenido:</strong> El hotel se registra correctamente y aparece en la tabla general, mostrando todos los campos, incluidas las tarifas y beneficios seleccionados.</p>
-<p><strong>Estado:</strong> Correcto 
-<strong>Observaciones:</strong>NA
- </p>
-<p>Validación requerida alerta cambiar a español </p>
-<p>CP-25: <strong>Carga</strong><strong> masiva de hoteles desde archivo Excel</strong>
-<strong>Descripción:</strong> Validar el flujo de carga masiva de hoteles, desde la selección del archivo tipo Excel hasta la revisión y posible edición antes de confirmar la carga.
-Plataforma: Web
-<strong>Precondiciones:</strong></p>
-<p>Usuario autenticado </p>
-<p>Archivo Excel con estructura válida y al menos 2 hoteles de ejemplo.</p>
-<p>Datos de Prueba: Archivo Excel</p>
-<p><strong>Pasos:</strong></p>
-<p>1. Ir a “Hoteles”.</p>
-<p>2. Hacer clic en el botón “Carga Masiva”.</p>
-<p>3. Seleccionar el archivo “hoteles_ejemplo.xlsx” en el campo correspondiente.</p>
-<p>4. Hacer clic en “Siguiente”.</p>
-<p>6. Confirmar la carga.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>Los hoteles en el archivo aparecen en la tabla tras carga masiva, con la información correctamente distribuida en cada campo.</p>
-<p><strong>Resultado Obtenido:</strong> fallo al adjuntar archivo 
-<strong>Estado: </strong>Fallido<strong>
-Observaciones:</strong></p>
-<p>CP-26: <strong>Edición de hotel: activar y desactivar beneficios existentes</strong></p>
-<p><strong>Descripción:</strong> Verificar que se puedan activar y desactivar beneficios de un hotel existente y que los cambios se reflejen en la tabla.</p>
-<p><strong>Plataforma:</strong> Web</p>
-<p><strong>Precondiciones</strong>: Existir un hotel con beneficios ya asignados. El usuario debe tener permisos de edición.</p>
-<p><strong>Datos de Prueba:</strong> Hotel con beneficios preexistentes (ej. "wifi" activado, "gimnasio" desactivado).</p>
-<p><strong>Pasos:</strong></p>
-<p>En el listado de hoteles, seleccionar un hotel que ya tenga algunos beneficios asignados.</p>
-<p>Hacer clic en "Editar".</p>
-<p>Activar un beneficio que antes no tenía </p>
-<p>Desactivar un beneficio que sí tenía </p>
-<p>Guardar los cambios.</p>
-<p>Volver a la tabla de hoteles y verificar los beneficios mostrados.</p>
-<p><strong>Resultado Esperado:</strong> Los cambios se guardan correctamente. En la tabla, el hotel refleja el nuevo estado: el beneficio activado aparece, el desactivado desaparece.</p>
-<p><strong>Resultado Obtenido:</strong> Edición de beneficios correcto.</p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>Observaciones:</strong> Para el filtrado de las columnas mostrar o ocultar solo se observan como opciones “Comentario estacionamiento “, “Personal”, se sugiere agregar el resto de opciones al filtrado</p>
-<p>CP-27: <strong>Envío de correo electrónico al crear solicitud de viático</strong></p>
-<p><strong>Descripción:</strong> Verificar que, al crear una nueva solicitud de viático, se envíen correos electrónicos de notificación al analista de viáticos y al supervisor correspondiente.</p>
-<p><strong>Plataforma:</strong> Web</p>
-<p><strong>Precondiciones:</strong> Empleado con sesión activa cuyo departamento tenga un supervisor asignado. Tener un analista de viáticos configurado en el sistema.</p>
-<p><strong>Datos de Prueba:</strong> Usuario solicitante, supervisor asignado, analista de viáticos.</p>
-<p><strong>Pasos:</strong></p>
-<p>Iniciar sesión </p>
-<p>Crear una nueva solicitud de viático (completar todos los datos requeridos).</p>
-<p>Guardar la solicitud.</p>
-<p>Revisar la bandeja de entrada del analista de viáticos y del supervisor del departamento.</p>
-<p><strong>Resultado Esperado:</strong> El analista de viáticos y el supervisor reciben un correo electrónico con la información de la solicitud: nombre del solicitante, datos de las personas que viajan, y un botón que redirige a la página de revisión de viáticos.
-<strong>Estado:</strong> Bloqueado</p>
-<p><strong>Resultado Obtenido:</strong>  No es posible verificar la recepción de correo ya que extrae la información de profit y envia directamente los correos  no disponible en el ambiente de prueba</p>
-<p>Observaciones: NA</p>
-<p>CP-28: <strong>Envío y recepción de notificación </strong><strong>push</strong></p>
-<p><strong>Descripción:</strong> <strong>Verificar que se puedan enviar y recibir notificaciones </strong><strong>push</strong> </p>
-<p><strong>Plataforma:</strong> Web</p>
-<p><strong>Precondiciones:</strong> Usuarios con sesión activa.</p>
-<p><strong>Datos de Prueba:</strong> Usuario administrador, usuario destinatario (solicitante y supervisor).</p>
-<p><strong>Pasos:</strong></p>
-<p>Crear solicitud de viáticos </p>
-<p>Verificar notificación push por cada rol </p>
-<p><strong>Resultado Esperado:</strong> La notificación push aparece en la interfaz del usuario destinatario </p>
-<p><strong>Resultado Obtenido:</strong> Se crearon viáticos de prueba para las cuentas solicitante@example.com y supervisor@example.com. No se observó envío o recepción de notificaciones push.</p>
-<p><strong>Estado:</strong> Fallido</p>
-<p><strong>Observaciones</strong>: N/A</p>
-<p>Rechazo en una solicitud de viatico notificación Error</p>
-<p>CP-29: <strong>Acceso al formulario de valoración de hotel desde solicitud aprobada</strong></p>
-<p><strong>Descripción:</strong> Verificar que el botón para valorar un hotel esté visible y accesible desde una solicitud de viático que ya se encuentra aprobada.</p>
-<p><strong>Plataforma:</strong> Web</p>
-<p><strong>Precondiciones</strong>: Existir una solicitud de viático en estado "Aprobada" que esté asociada a un hotel.</p>
-<p><strong>Datos de Prueba</strong>: Solicitud de viático aprobada con hotel registrado.</p>
-<p>Pasos:</p>
-<p>Como usuario, ingresar al módulo de solicitudes de viático.</p>
-<p>Buscar una solicitud que ya esté aprobada.</p>
-<p>Localizar el botón amarillo "Valorar Hotel".</p>
-<p>Hacer clic en el botón.</p>
-<p><strong>Resultado Esperado:</strong> Se abre un modal o formulario que permite calificar el hotel </p>
-<p><strong>Resultado Obtenido:</strong> Función de valoración activa, registro de valoración de hotel en solicitudes aun sin aprobar / sin hotel registrado. </p>
-<p><strong>Estado:</strong> Correcto (Con observaciones)</p>
-<p><strong>Observaciones:</strong>  Actualmente, es posible realizar una valoración en solicitudes que no cuentan con hoteles registrados o que están canceladas, se sugiere estar activas por ejemplo únicamente para aquellas solicitudes que ya han sido aprobadas y que cumplen con la condición de tener hoteles ya registrado el cual valorar.</p>
-<p>CP-30: <strong>Validación de correo duplicado en creación de usuario</strong>
-<strong>Descripción:</strong> Verificar que al intentar crear un usuario con un correo electrónico que ya está registrado, la aplicación muestre alerta de error claro y no permita la creación.
-<strong>Plataforma:</strong> Web.
-<strong>Precondiciones:</strong></p>
-<p>Usuario con permisos de administración </p>
-<p><strong>Pasos:</strong></p>
-<p>Navegar a Ajustes &gt; Usuarios y hacer clic en “Crear usuario”.</p>
-<p>Completar todos los campos obligatorios nombre , Apellido , Cedula , Rol , Empresa , Departamento , Correo electrónico , Contraseña .</p>
-<p>En el campo “Correo electrónico”, ingresar “admin@admin.com”.</p>
-<p>Hacer clic en el botón Crear.</p>
-<p>Observar el mensaje mostrado en pantalla.</p>
-<p><strong>Resultado Esperado:</strong></p>
-<p>El sistema debe mostrar un mensaje de error indicando que el correo electrónico ya está registrado (ej. “El correo electrónico ya existe”).</p>
-<p>No debe permitirse la creación del usuario y el formulario debe permanecer en pantalla sin recargarse completamente (o con los datos ingresados).</p>
-<p><strong>Resultado Obtenido:</strong>  Sin mensaje de alerta, app se rompe sale del formulario.
-<strong>Estado: </strong>Fallido</p>
-<p><strong>Observaciones:</strong> NA</p>
+<h2>Matriz Detallada de Casos de Prueba</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP-01</td>
+<td>Verificar que un usuario registrado pueda iniciar sesión correctamente utilizando credenciales válidas.</td>
+<td>El sistema permite el acceso y redirige al usuario al Dashboard mostrando el contenido correspondiente al perfil autenticado.</td>
+<td>Carga correctamente al Dashboard.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-02</td>
+<td>Verificar que al acceder al Dashboard se muestren los indicadores KPI "Aprobados", "Por aprobar" y "Rechazados" y los datos del usuario correctamente.</td>
+<td>Se visualizan los tres KPI con sus respectivos valores.</td>
+<td>El KPI "Aprobados" no filtra correctamente al redirigir y las siglas del usuario son incorrectas.</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP-03</td>
+<td>Validar que el Dashboard muestre una gráfica histórica de viáticos por día.</td>
+<td>Se muestra una gráfica con información histórica de viáticos clasificada.</td>
+<td>Gráfica con información histórica de viáticos clasificada.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-04</td>
+<td>Verificar que el botón "Actualizar contraseña" despliegue el formulario para cambiar la contraseña del usuario.</td>
+<td>Se muestra el formulario para actualizar la contraseña.</td>
+<td>Se muestra el formulario para actualizar la contraseña.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-05</td>
+<td>Verificar que el botón "Salir" (Logout) cierre la sesión actual y redirija al usuario a la pantalla de inicio de sesión.</td>
+<td>El usuario es desconectado y llevado a la pantalla de login.</td>
+<td>El usuario es desconectado y llevado a la pantalla de login.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-06</td>
+<td>Verificar que la tabla de "Aprobación de Viáticos" muestre correctamente las opciones de estado y permita exportar los datos a Excel.</td>
+<td>La tabla muestra correctamente los estados: "Rechazados", "Cancelados", "Por aprobar analista", "Aprobado por sup. y analista".</td>
+<td>La tabla muestra correctamente los estados indicados.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-07</td>
+<td>Validar que al seleccionar un viático de la tabla se muestren correctamente los detalles y las observaciones de la solicitud.</td>
+<td>Se despliegan los detalles y observaciones específicos del viático seleccionado.</td>
+<td>Se despliegan los detalles y observaciones específicos del viático seleccionado.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-08</td>
+<td>Verificar que el usuario puede crear correctamente una solicitud de viáticos llenando todos los campos requeridos.</td>
+<td>La solicitud es creada exitosamente; se muestra un mensaje de confirmación y la solicitud aparece en la lista.</td>
+<td>La solicitud es creada exitosamente; se muestra un mensaje de confirmación y la solicitud aparece en la lista.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-09</td>
+<td>Verificar que el módulo de Reportes muestre la tabla de solicitudes de viáticos clasificadas por estado.</td>
+<td>La tabla muestra, de manera diferenciada, las solicitudes en estado "sin aprobar", "aprobados" y "rechazados".</td>
+<td>La tabla muestra los tres estados correctamente, pero el filtro de selectores presenta fallas.</td>
+<td>Correcto (requiere ajuste en selectores)</td>
+</tr>
+<tr>
+<td>CP-10</td>
+<td>Verificar que "Histórico de actualización de viáticos" muestre la tabla con las columnas correspondientes.</td>
+<td>La tabla se despliega correctamente con las columnas especificadas.</td>
+<td>Se observa toda la información de los viáticos realizados y se aplican las opciones de filtro.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-11</td>
+<td>Verificar que "Ajustes Departamentos" muestre una tabla con las columnas correspondientes.</td>
+<td>La tabla muestra correctamente las columnas: código, departamento, supervisor y presupuesto total.</td>
+<td>La tabla muestra correctamente las columnas indicadas.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-12</td>
+<td>Verificar que el usuario puede crear un nuevo departamento llenando todos los campos requeridos.</td>
+<td>El departamento es registrado y aparece en la tabla.</td>
+<td>Se crea correctamente el departamento nuevo.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-13</td>
+<td>Verificar la funcionalidad de asignación de "Budget" o presupuesto específico a un departamento.</td>
+<td>El presupuesto es asignado exitosamente al departamento.</td>
+<td>Fallo al crear Budget.</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP-14</td>
+<td>Verificar que "Tipo de trámites" visualice una tabla con las columnas correspondientes.</td>
+<td>La tabla muestra correctamente columnas para "Tipo de trámite" y "Fecha de creación".</td>
+<td>Se puede crear correctamente el trámite.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-15</td>
+<td>Verificar que "Usuarios" muestre una tabla con las columnas correspondientes.</td>
+<td>La tabla muestra correctamente los campos cédula, nombre, apellido, empresa, departamento y rol.</td>
+<td>La tabla muestra correctamente los campos solicitados.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-16</td>
+<td>Verificar que, al editar un usuario, se despliega un formulario donde se puede modificar rol e información.</td>
+<td>Se actualiza la información del usuario y se refleja en la tabla.</td>
+<td>Se actualiza la información del usuario y se refleja en la tabla.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-17</td>
+<td>Verificar que el formulario de creación de usuario permite ingresar todos los campos requeridos.</td>
+<td>El usuario se agrega y aparece en la tabla.</td>
+<td>El usuario se agrega y aparece en la tabla.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-18</td>
+<td>Validar que un usuario con rol "admin" pueda crear un nuevo rol y guardar exitosamente.</td>
+<td>Se guarda el nuevo rol correctamente y se muestra un mensaje de éxito.</td>
+<td>Alerta de error; la aplicación se rompe.</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP-19</td>
+<td>Verificar que la importación de usuarios vía Excel permite cargar, revisar y editar antes de confirmar.</td>
+<td>Recepción de correo tras la importación.</td>
+<td>No implementado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP-20</td>
+<td>Validar que el usuario puede crear un nuevo tipo de trámite.</td>
+<td>El nuevo tipo de trámite se guarda correctamente y es visible en la tabla.</td>
+<td>El nuevo tipo de trámite se guarda correctamente y es visible en la tabla.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-21</td>
+<td>Verificar que "Zonas" muestre una tabla con las columnas correspondientes.</td>
+<td>La tabla muestra correctamente las columnas "Zona" y "Fecha de creación".</td>
+<td>La tabla muestra correctamente las columnas solicitadas.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-22</td>
+<td>Validar la creación de una nueva zona mediante el formulario correspondiente.</td>
+<td>La zona es creada correctamente y aparece en la tabla de zonas.</td>
+<td>La zona es creada correctamente y aparece en la tabla de zonas.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-23</td>
+<td>Verificar que "Hoteles" despliegue una tabla con las columnas correspondientes.</td>
+<td>La tabla muestra correctamente los campos de zona, hotel, dirección y beneficios.</td>
+<td>La tabla muestra correctamente los campos solicitados.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-24</td>
+<td>Validar la creación de lista de hoteles con todos los campos requeridos.</td>
+<td>El hotel se registra correctamente y aparece en la tabla general.</td>
+<td>El hotel se registra correctamente y aparece en la tabla general.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-25</td>
+<td>Validar el flujo de carga masiva de hoteles desde archivo Excel.</td>
+<td>Los hoteles del archivo aparecen en la tabla tras la carga masiva.</td>
+<td>Fallo al adjuntar archivo.</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP-26</td>
+<td>Verificar que se puedan activar y desactivar beneficios de un hotel existente.</td>
+<td>Los cambios se guardan correctamente y se reflejan en la tabla.</td>
+<td>Edición de beneficios correcta.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP-27</td>
+<td>Verificar que al crear una solicitud de viático se envíen correos de notificación al analista y al supervisor.</td>
+<td>El analista y el supervisor reciben el correo de notificación.</td>
+<td>No es posible verificar la recepción del correo en el ambiente de prueba.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP-28</td>
+<td>Verificar que se puedan enviar y recibir notificaciones push.</td>
+<td>La notificación push aparece en la interfaz del usuario destinatario.</td>
+<td>No se observó envío ni recepción de notificaciones push.</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP-29</td>
+<td>Verificar que el botón para valorar un hotel esté visible y accesible desde una solicitud aprobada.</td>
+<td>Se abre un modal o formulario que permite calificar el hotel.</td>
+<td>Función activa, pero accesible también en solicitudes no aprobadas o sin hotel registrado.</td>
+<td>Correcto (con observaciones)</td>
+</tr>
+<tr>
+<td>CP-30</td>
+<td>Verificar que al crear un usuario con correo ya registrado se muestre una alerta clara y no se permita la creación.</td>
+<td>Mensaje de error claro; no se crea el usuario.</td>
+<td>Sin alerta; la aplicación se rompe y sale del formulario.</td>
+<td>Fallido</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Detalle de Casos de Prueba</h2>
+<h4>CP-01 — Inicio de sesión exitoso en la plataforma de viáticos</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>El usuario debe estar previamente registrado y su cuenta debe estar activa.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Correo electrónico: Solicitante@example.com<br>Contraseña: ExpenseFlow#2026</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Acceder a la URL https://expenseflow.example.com/admin/login.<br>2. Introducir el correo electrónico.<br>3. Introducir la contraseña.<br>4. Hacer clic en el botón Entrar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El sistema permite el acceso y redirige al usuario al Dashboard mostrando el contenido correspondiente al perfil autenticado.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Carga correctamente al Dashboard.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-001 (la persistencia de sesión no depende de la opción "Recuérdame").</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-02 — Visualización correcta de los KPIs en el Dashboard / Datos Usuario</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado en la plataforma y en la sección Dashboard.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Sesión iniciada con un usuario válido.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Observar el área de indicadores KPI.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se visualizan los tres KPI: "Aprobados", "Por aprobar" y "Rechazados" con sus respectivos valores.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Al hacer clic en los KPI "Rechazados" y "Por aprobar" redirige correctamente a la tabla filtrada por esos valores; esto no ocurre para "Aprobados" (redirige a <code>https://expenseflow.example.com/admin/aprobacion-viaticos?activeTab=Todos</code> en vez de filtrar por el estado correspondiente). Además, las siglas del usuario mostradas son incorrectas: en lugar de tomar la primera letra del nombre y del apellido, toma las dos primeras letras del nombre.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-002 (filtro del KPI "Aprobados") y BUG-003 (siglas de usuario incorrectas).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-03 — Visualización de gráfica histórica de viáticos por día</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado y ubicado en el Dashboard.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Sesión iniciada con historial de viáticos registrado.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ingresar al Dashboard.<br>2. Buscar la sección "Histórico" y visualizar la gráfica de viáticos por día.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se muestra una gráfica con información histórica de viáticos clasificada.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Gráfica con información histórica de viáticos clasificada.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-04 — Funcionamiento del botón "Actualizar contraseña" en el Dashboard</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado y ubicado en el Dashboard.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Usuario con perfil editable.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ingresar al Dashboard.<br>2. Hacer clic en el botón "Actualizar contraseña".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se muestra el formulario para actualizar la contraseña.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se muestra el formulario para actualizar la contraseña.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-05 — Funcionamiento del botón "Salir" (Logout) en el Dashboard</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado y ubicado en el Dashboard.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Sesión iniciada.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ingresar al Dashboard.<br>2. Hacer clic en el botón "Salir".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El usuario es desconectado y llevado a la pantalla de login.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>El usuario es desconectado y llevado a la pantalla de login.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Pendiente verificar que la sesión se cierre correctamente y que no se pueda volver al Dashboard con el botón de atrás del navegador.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-06 — Visualización de opciones de estado en la tabla de Aprobación de Viáticos</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos para acceder al módulo de aprobación de viáticos.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Viáticos registrados previamente en diferentes estados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en la sección "Aprobación de viáticos" desde el menú principal.<br>2. Observar la tabla y sus opciones de filtro o visualización.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla muestra correctamente los estados: "Rechazados", "Cancelados", "Por aprobar analista", "Aprobado por sup. y analista".</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La tabla muestra correctamente los estados: "Rechazados", "Cancelados", "Por aprobar analista", "Aprobado por sup. y analista".</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-07 — Revisión de detalles y observaciones de una solicitud de viático</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado. Viáticos cargados en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Un viático seleccionable con detalles y observaciones registrados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. En la pantalla de tabla de aprobación de viáticos, hacer clic en algún registro de viático.<br>2. Observar los detalles y el campo de observaciones de la solicitud.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se despliegan los detalles y observaciones específicos del viático seleccionado.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se despliegan los detalles y observaciones específicos del viático seleccionado.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-08 — Creación exitosa de una solicitud de viáticos con todos los campos y opciones</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado en la plataforma. Permisos para crear solicitudes de viático.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Solicitante: "Equipo Thomas"<br>Tipo de trámite<br>Fecha de salida<br>Fecha de retorno<br>Acompañante<br>Incluirme: Toggle en "Sí"<br>Observaciones/resumen<br>Desea agregar más información: Toggle en "Sí"</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en la sección "Solicitud de viáticos" desde el menú principal.<br>2. Hacer clic en el botón "Crear solicitud de viáticos".<br>3. Llenar el formulario con la información indicada en los Datos de Prueba.<br>4. Usar el toggle "Incluirme" y establecerlo en "Sí".<br>5. Ingresar el resumen en observaciones, verificando que no exceda los 50 caracteres.<br>6. Usar el toggle "Desea agregar más información" y establecerlo en "No".<br>7. Guardar o enviar la solicitud.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La solicitud es creada exitosamente; se muestra un mensaje de confirmación y la solicitud aparece en la lista de solicitudes.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La solicitud es creada exitosamente; se muestra un mensaje de confirmación y la solicitud aparece en la lista de solicitudes.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-004 (el campo "Tasa BCV" no se repuebla al borrarlo) y BUG-005 (el selector de hotel queda vacío para la zona/ciudad seleccionada).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-09 — Visualización de solicitudes de viáticos en el módulo de Reportes</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado en la plataforma. Existencia de solicitudes de viáticos en los estados "sin aprobar", "aprobados" y "rechazados".</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Solicitudes de viáticos previamente registradas en distintos estados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en la sección "Reportes" desde el menú principal.<br>2. Observar la tabla principal que contiene las solicitudes de viáticos.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla muestra, de manera diferenciada, las solicitudes de viáticos en estado "sin aprobar", "aprobados" y "rechazados", permitiendo visualizarlos correctamente.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La tabla muestra, de manera diferenciada, las solicitudes en los tres estados solicitados; sin embargo, el selector de filtro permite seleccionar 2 o 3 opciones a la vez, el filtro de "Tipo de trámite" no contempla todos los tipos existentes, y el filtro de Departamento no se refleja en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto (requiere ajuste en selectores)</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-006 (selector múltiple selecciona 2-3 opciones a la vez), BUG-007 (filtro "Tipo de trámite" no incluye Jornada especial/Otros) y BUG-008 (filtro de Departamento no se aplica en la tabla). [enlace de grabación interno omitido]</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-10 — Visualización correcta del histórico de actualización de viáticos</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado en la plataforma. Existen registros de actualizaciones sobre solicitudes de viáticos en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Actualizaciones de solicitudes de viáticos previamente realizadas por diferentes usuarios y con diferentes fechas/estados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en la sección "Histórico de actualización de viáticos" desde el menú principal.<br>2. Visualizar la tabla que muestra el histórico de actualizaciones.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla se despliega correctamente y contiene las columnas: autorizado por, modificación de status, fecha de actualización, fecha de salida, fecha de retorno y observaciones.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se observa toda la información de los viáticos realizados y se aplican las opciones de filtro.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-11 — Visualización de la tabla de departamentos en Ajustes</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos de administración. Departamentos registrados previamente en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Múltiples departamentos cargados con código, nombre, supervisor asignado y presupuesto total.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en la sección "Ajustes Departamentos" desde el menú.<br>2. Visualizar la tabla principal de departamentos.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla muestra correctamente las columnas: código, departamento, supervisor, y presupuesto total para cada registro.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La tabla muestra correctamente las columnas: código, departamento, supervisor, y presupuesto total para cada registro.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-12 — Creación de un nuevo departamento</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos de creación.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Código Profit Interno: "DPTO-PRUEBA-01"<br>Nombre del departamento<br>Supervisor</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Ajustes Departamentos".<br>2. Hacer clic en el botón "Crear Departamento".<br>3. Llenar los campos: Código Profit Interno y Nombre del departamento.<br>4. Asignar supervisor de sede/área en el correspondiente campo.<br>5. Elegir una de las opciones de guardar: "Crear", "Crear y crear otro" o cancelar la operación.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Si se elige "Crear" o "Crear y crear otro", el departamento es registrado y aparece en la tabla; si se cancela, no se registra ningún dato.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se crea correctamente el departamento nuevo.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-13 — Asignación de presupuesto (Budget) a un departamento desde edición</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permiso de edición sobre departamentos. Departamento previamente creado y visible en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Monto a asignar: 500,000</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. En la tabla de departamentos, hacer clic en el botón "Crear Budget" para un departamento.<br>2. Se despliega el campo "amount".<br>3. Ingresar el monto deseado y confirmar con el botón "Crear".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El presupuesto es asignado exitosamente al departamento; se actualiza la información y muestra mensaje de éxito.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Fallo al crear Budget.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-009. Se recomienda además que el campo "amount" no acepte valores no numéricos o negativos.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-14 — Visualización de la tabla de tipo de trámites – Creación</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con acceso a la sección correspondiente. Existe al menos un tipo de trámite previamente registrado en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Tipos de trámite de ejemplo: "Comisión", "Capacitación" (con sus fechas de creación).</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en la opción "Tipo de trámites" en el menú.<br>2. Observar la tabla que se presenta en pantalla.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla muestra correctamente columnas para "Tipo de trámite" y "Fecha de creación" con datos válidos.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se puede crear correctamente el trámite.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-010 (ausencia de validación para evitar tipos de trámite duplicados).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-15 — Visualización de la tabla de usuarios</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos para ver usuarios. Usuarios registrados previamente en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Usuarios" en el menú principal.<br>2. Observar la tabla presentada en pantalla.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla muestra correctamente los campos cédula, nombre, apellido, empresa, departamento y rol para cada usuario registrado.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La tabla muestra correctamente los campos cédula, nombre, apellido, empresa, departamento y rol para cada usuario registrado.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Se propone agregar un buscador para los usuarios (mejora sugerida, no bloqueante).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-16 — Edición de usuario</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos administrador. Usuario existente en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. En la lista de usuarios, hacer clic en el botón de editar correspondiente.<br>2. Guardar los cambios.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se actualiza la información del usuario y se refleja en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se actualiza la información del usuario y se refleja en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-17 — Creación de un usuario nuevo</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permiso para crear usuarios.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Nombre: "Luis"<br>Apellido: "Gómez"<br>Cédula: "45678901"<br>Rol: "Operador"<br>Empresa: "BetaCorp"<br>Departamento: "Logística"<br>Email: "luis.gomez@betacorp.com"<br>Contraseña: "LuisGomez2026*"</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Usuarios".<br>2. Hacer clic en el botón "Crear usuario".<br>3. Completar todos los campos del formulario según los datos de prueba.<br>4. Probar las siguientes opciones: a) Clic en "Crear". b) Clic en "Crear y crear otro". c) Clic en "Cancelar".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El usuario se agrega y aparece en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>El usuario se agrega y aparece en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-18 — Creación de nuevo rol específico por parte de un Usuario admin</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario con rol "Super Usuario" ha iniciado sesión en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. En el menú lateral, ir a Ajustes &gt; Usuarios.<br>2. Hacer clic en el botón "+ Agregar Nuevo" (o "Crear").<br>3. Hacer clic en el botón "Crear" (o "Crear y crear otro" según se requiera).<br>4. Observar el mensaje de éxito y verificar el nuevo rol en el listado.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Al hacer clic en "Crear", se guarda el nuevo rol correctamente y se muestra un mensaje de éxito.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Alerta de error; la aplicación se rompe.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-011. La aplicación se rompe sin mostrar una alerta de error clara al usuario.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-19 — Importación masiva de usuarios desde archivo Excel</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos para importación. Archivo Excel válido con datos de usuarios estructurados correctamente.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Plantilla Excel con campos para la creación de usuario</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Usuarios".<br>2. Hacer clic en el botón "Import".<br>3. Seleccionar el archivo "usuarios_import.xlsx".<br>4. Hacer clic en "Siguiente".<br>5. Revisar la previsualización; editar registros si es posible.<br>6. Confirmar la importación.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Recepción de correo tras la importación.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-012 (limitación: funcionalidad no implementada, no se cuenta con una plantilla de Excel específica).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-20 — Creación de un nuevo tipo de trámite</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Tipo de trámite: "Prueba"</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Tipo de trámites" en el menú.<br>2. Hacer clic en el botón "Crear tipo de trámite".<br>3. Llenar el campo Tipo de trámite, seleccionar Traslado Foráneo o Local.<br>4. Guardar la información.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El nuevo tipo de trámite se guarda correctamente y es visible en la tabla junto con la fecha de creación.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>El nuevo tipo de trámite se guarda correctamente y es visible en la tabla junto con la fecha de creación.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-21 — Visualización de la tabla de zonas</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con acceso a la sección. Al menos una zona registrada previamente en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en el menú "Zonas".<br>2. Observar la tabla presentada.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla muestra correctamente las columnas "Zona" y "Fecha de creación" con datos válidos y correctamente alineados.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La tabla muestra correctamente las columnas "Zona" y "Fecha de creación" con datos válidos y correctamente alineados.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-22 — Creación de una nueva zona</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos de creación para esta sección.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Zona: "Prueba"<br>Descripción: "Prueba"</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Zonas".<br>2. Hacer clic en el botón "Crear Zona".<br>3. Completar los campos: Zona y Descripción.<br>4. Hacer clic en "Crear".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La zona es creada correctamente y aparece en la tabla de zonas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La zona es creada correctamente y aparece en la tabla de zonas.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Pendiente verificar la validación de campos obligatorios, mensajes de éxito y el correcto refresco de la tabla.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-23 — Visualización de la tabla de hoteles</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado. Al menos un hotel registrado en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Hoteles" en el menú principal.<br>2. Observar la tabla desplegada.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La tabla muestra correctamente los campos de zona, hotel, dirección y beneficios para cada registro disponible.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>La tabla muestra correctamente los campos de zona, hotel, dirección y beneficios para cada registro disponible.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-24 — Creación de lista de hoteles</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permiso. Zonas previamente registradas para selección.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Zona<br>Nombre hotel<br>Razón social<br>Dirección<br>Número de teléfono<br>Número local<br>Datos bancarios<br>Beneficios<br>Tarifas</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Hoteles".<br>2. Hacer clic en "Crear lista de hoteles".<br>3. Desplegar y completar todos los campos del formulario.<br>4. Hacer clic en el botón "Crear".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El hotel se registra correctamente y aparece en la tabla general, mostrando todos los campos, incluidas las tarifas y beneficios seleccionados.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>El hotel se registra correctamente y aparece en la tabla general, mostrando todos los campos, incluidas las tarifas y beneficios seleccionados.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-013 (alerta de validación requerida no traducida al español).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-25 — Carga masiva de hoteles desde archivo Excel</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado. Archivo Excel con estructura válida y al menos 2 hoteles de ejemplo.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Archivo Excel</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Hoteles".<br>2. Hacer clic en el botón "Carga Masiva".<br>3. Seleccionar el archivo "hoteles_ejemplo.xlsx" en el campo correspondiente.<br>4. Hacer clic en "Siguiente".<br>5. Confirmar la carga.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Los hoteles en el archivo aparecen en la tabla tras la carga masiva, con la información correctamente distribuida en cada campo.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Fallo al adjuntar archivo.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-014.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-26 — Edición de hotel: activar y desactivar beneficios existentes</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Existir un hotel con beneficios ya asignados. El usuario debe tener permisos de edición.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Hotel con beneficios preexistentes (ej. "wifi" activado, "gimnasio" desactivado).</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. En el listado de hoteles, seleccionar un hotel que ya tenga algunos beneficios asignados.<br>2. Hacer clic en "Editar".<br>3. Activar un beneficio que antes no tenía.<br>4. Desactivar un beneficio que sí tenía.<br>5. Guardar los cambios.<br>6. Volver a la tabla de hoteles y verificar los beneficios mostrados.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Los cambios se guardan correctamente. En la tabla, el hotel refleja el nuevo estado: el beneficio activado aparece, el desactivado desaparece.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Edición de beneficios correcta.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-015. Para el filtrado de columnas mostrar/ocultar, solo se observan como opciones "Comentario estacionamiento" y "Personal"; se sugiere agregar el resto de opciones al filtrado.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-27 — Envío de correo electrónico al crear solicitud de viático</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Empleado con sesión activa cuyo departamento tenga un supervisor asignado. Tener un analista de viáticos configurado en el sistema.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Usuario solicitante, supervisor asignado, analista de viáticos.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Iniciar sesión.<br>2. Crear una nueva solicitud de viático (completar todos los datos requeridos).<br>3. Guardar la solicitud.<br>4. Revisar la bandeja de entrada del analista de viáticos y del supervisor del departamento.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El analista de viáticos y el supervisor reciben un correo electrónico con la información de la solicitud: nombre del solicitante, datos de las personas que viajan, y un botón que redirige a la página de revisión de viáticos.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>No es posible verificar la recepción de correo ya que el sistema extrae la información de Profit y envía los correos directamente; ese flujo no está disponible en el ambiente de prueba.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-016 (limitación de ambiente, no defecto funcional confirmado).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-28 — Envío y recepción de notificación push</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuarios con sesión activa.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Usuario administrador, usuario destinatario (solicitante y supervisor).</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Crear solicitud de viáticos.<br>2. Verificar notificación push por cada rol.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>La notificación push aparece en la interfaz del usuario destinatario.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se crearon viáticos de prueba para las cuentas solicitante@example.com y supervisor@example.com. No se observó envío ni recepción de notificaciones push.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-017. Se observó adicionalmente un error de notificación al rechazar una solicitud de viático (detalle no ampliado en la fuente original).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-29 — Acceso al formulario de valoración de hotel desde solicitud aprobada</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Existir una solicitud de viático en estado "Aprobada" que esté asociada a un hotel.</td>
+</tr>
+<tr>
+<td><strong>Datos de Prueba</strong></td>
+<td>Solicitud de viático aprobada con hotel registrado.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Como usuario, ingresar al módulo de solicitudes de viático.<br>2. Buscar una solicitud que ya esté aprobada.<br>3. Localizar el botón amarillo "Valorar Hotel".<br>4. Hacer clic en el botón.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se abre un modal o formulario que permite calificar el hotel.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Función de valoración activa; se puede registrar la valoración de hotel incluso en solicitudes aún sin aprobar o sin hotel registrado.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto (con observaciones)</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-018. Actualmente es posible valorar solicitudes que no cuentan con hotel registrado o que están canceladas; se sugiere restringir la valoración únicamente a solicitudes aprobadas con hotel registrado.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP-30 — Validación de correo duplicado en creación de usuario</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma</strong></td>
+<td>Web</td>
+</tr>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario con permisos de administración.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Navegar a Ajustes &gt; Usuarios y hacer clic en "Crear usuario".<br>2. Completar todos los campos obligatorios: nombre, apellido, cédula, rol, empresa, departamento, correo electrónico, contraseña.<br>3. En el campo "Correo electrónico", ingresar "admin@admin.com".<br>4. Hacer clic en el botón Crear.<br>5. Observar el mensaje mostrado en pantalla.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El sistema debe mostrar un mensaje de error indicando que el correo electrónico ya está registrado (ej. "El correo electrónico ya existe"). No debe permitirse la creación del usuario y el formulario debe permanecer en pantalla sin recargarse completamente (o con los datos ingresados).</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Sin mensaje de alerta; la aplicación se rompe y sale del formulario.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-019.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Registro de Hallazgos</h2>
+<p>19 hallazgos identificados en la corrida de regresión.</p>
+<h3>BUG-001 — Persistencia de sesión no respeta la opción "Recuérdame"</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-001 (caso CP-01)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>La sesión se mantiene al cerrar inesperadamente la página, independientemente de si la opción "Recuérdame" está marcada o no, lo que genera confusión sobre el comportamiento esperado de inicio de sesión.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar sesión sin marcar "Recuérdame".<br>2. Cerrar la página inesperadamente.<br>3. Volver a abrir la URL de la plataforma.<br>4. Observar que la sesión se mantiene activa igualmente.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-002 — El KPI "Aprobados" no filtra correctamente al redirigir</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-002 (caso CP-02)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al hacer clic en el KPI "Aprobados" del Dashboard, el sistema redirige a <code>aprobacion-viaticos?activeTab=Todos</code> en vez de filtrar la tabla por el estado "Aprobados", a diferencia de los KPI "Rechazados" y "Por aprobar" que sí filtran correctamente.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar sesión y acceder al Dashboard.<br>2. Hacer clic en el KPI "Aprobados".<br>3. Observar que la tabla resultante muestra la pestaña "Todos" en vez de filtrar por aprobados.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-003 — Siglas del usuario incorrectas en el Dashboard</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-003 (caso CP-02)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Las siglas mostradas para el usuario toman las dos primeras letras del nombre, en vez de la primera letra del nombre y la primera letra del apellido.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar sesión con un usuario que tenga nombre y apellido.<br>2. Observar el avatar/siglas del usuario en el Dashboard.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-004 — El campo "Tasa BCV" no se repuebla tras borrarlo</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-004 (caso CP-08)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al borrar el campo "Tasa BCV" en el formulario de creación de solicitud, el valor debería visualizarse nuevamente (recalcularse), pero actualmente queda vacío o en 0.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar creación de una solicitud de viáticos.<br>2. Ubicar el campo "Tasa BCV".<br>3. Borrar su contenido.<br>4. Observar que el campo queda vacío o en 0 en lugar de recalcularse.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-005 — Selector de hotel vacío para la zona/ciudad seleccionada</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-005 (caso CP-08)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>En el selector de zona con opciones correspondientes a ciudades, la opción de hotel se muestra vacía o como opcional, en vez de listar los hoteles disponibles para esa zona/ciudad.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar creación de una solicitud de viáticos.<br>2. Seleccionar una zona/ciudad en el formulario.<br>3. Observar el selector de hotel asociado.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-006 — Selector de filtros múltiples en Reportes selecciona varias opciones a la vez</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-006 (caso CP-09)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El selector de filtros del módulo de Reportes selecciona 2 o 3 opciones a la vez en lugar de respetar la selección individual del usuario.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder al módulo de Reportes.<br>2. Abrir cualquier selector de filtro de selección múltiple.<br>3. Seleccionar una sola opción.<br>4. Observar que el sistema marca 2 o 3 opciones simultáneamente.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-007 — Filtro "Tipo de trámite" en Reportes no incluye todos los tipos existentes</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-007 (caso CP-09)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El filtro "Tipo de trámite" del módulo de Reportes únicamente contempla "Local" o "Foráneo" (tipo de traslado); tipos como "Jornada especial" u "Otros" no aparecen como opción de filtrado, lo que genera confusión sobre el propósito del filtro.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder al módulo de Reportes.<br>2. Abrir el filtro "Tipo de trámite".<br>3. Verificar las opciones disponibles frente a los tipos de trámite reales configurados en el sistema (Comisión, Capacitación, Jornada especial, Otros, etc.).</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-008 — Filtro de Departamento no se aplica en la tabla de Reportes</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-008 (caso CP-09)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al aplicar el filtro de Departamento en el módulo de Reportes, el criterio no se refleja en la tabla de resultados.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder al módulo de Reportes.<br>2. Aplicar un filtro por Departamento.<br>3. Observar que la tabla no refleja el filtrado aplicado.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-009 — Fallo al crear Budget (presupuesto) para un departamento</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-009 (caso CP-13)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al intentar asignar un presupuesto ("Budget") a un departamento desde la edición, la operación falla y no se asigna el monto ni se muestra un mensaje de éxito.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder a la tabla de departamentos.<br>2. Hacer clic en "Crear Budget" para un departamento.<br>3. Ingresar un monto (ej. 500,000) y confirmar con "Crear".<br>4. Observar que la operación falla ("Fallo al crear Budget").</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-010 — Ausencia de validación para evitar tipos de trámite duplicados</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-010 (caso CP-14)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El sistema permite crear tipos de trámite con el mismo nombre de uno ya existente, sin mostrar una validación que impida el duplicado.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder a "Tipo de trámites".<br>2. Crear un tipo de trámite con un nombre ya existente.<br>3. Observar que el sistema permite el registro sin alertar sobre el duplicado.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-011 — Creación de nuevo rol rompe la aplicación sin mostrar alerta de error</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-011 (caso CP-18)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al intentar crear un nuevo rol desde Ajustes &gt; Usuarios como usuario "Super Usuario"/admin, la aplicación se rompe (falla) sin desplegar una alerta de error clara para el usuario.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar sesión con un usuario con rol "Super Usuario".<br>2. Ir a Ajustes &gt; Usuarios.<br>3. Hacer clic en "+ Agregar Nuevo" (crear rol).<br>4. Hacer clic en "Crear".<br>5. Observar que la aplicación se rompe sin una alerta de error clara.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-012 — Importación masiva de usuarios desde Excel no implementada</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-012 (caso CP-19)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>La funcionalidad de importación masiva de usuarios desde un archivo Excel no está implementada; además, no existe una plantilla de Excel específica para esta importación. Se clasifica como limitación de la implementación actual, no como una falla transitoria.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder a "Usuarios".<br>2. Hacer clic en el botón "Import".<br>3. Intentar seguir el flujo de importación.<br>4. Confirmar que no hay plantilla ni funcionalidad disponible.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-013 — Alerta de validación al crear hotel no está traducida al español</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-013 (caso CP-24)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al completar el formulario de "Crear lista de hoteles", una alerta de validación requerida se muestra en un idioma distinto al español configurado en la interfaz.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder a "Hoteles" &gt; "Crear lista de hoteles".<br>2. Dejar sin completar un campo requerido y continuar.<br>3. Observar el idioma de la alerta de validación mostrada.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-014 — Carga masiva de hoteles falla al adjuntar archivo Excel</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-014 (caso CP-25)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al intentar adjuntar el archivo Excel para la carga masiva de hoteles, la operación falla, impidiendo completar el flujo de importación.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a "Hoteles" &gt; "Carga Masiva".<br>2. Seleccionar el archivo "hoteles_ejemplo.xlsx".<br>3. Hacer clic en "Siguiente".<br>4. Observar el fallo al adjuntar el archivo.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-015 — Filtro de columnas mostrar/ocultar en Hoteles expone solo una parte de los beneficios</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-015 (caso CP-26)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El filtro para mostrar u ocultar columnas de beneficios en la tabla de Hoteles solo expone las opciones "Comentario estacionamiento" y "Personal", sin incluir el resto de los beneficios configurables (desayuno, almuerzo, cena, wifi, gimnasio, etc.).</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder a la tabla de Hoteles.<br>2. Abrir el filtro de columnas mostrar/ocultar.<br>3. Observar que solo aparecen 2 opciones de beneficios disponibles para filtrar.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-016 — No es posible verificar el envío de correo al crear solicitud de viático en el ambiente de prueba</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-016 (caso CP-27)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El envío de notificación por correo al analista de viáticos y al supervisor depende de información extraída de Profit y se dispara directamente desde ese flujo, el cual no está disponible en el ambiente de prueba. Se clasifica como limitación de ambiente, no como defecto funcional confirmado.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>No aplica (limitación de ambiente)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Crear una solicitud de viático con un departamento que tenga supervisor asignado.<br>2. Revisar la bandeja de entrada del analista de viáticos y del supervisor.<br>3. Confirmar que no se puede validar el envío en este ambiente.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-017 — Notificaciones push no se envían ni se reciben</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-017 (caso CP-28)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al crear solicitudes de viáticos de prueba para las cuentas solicitante y supervisor, no se observó envío ni recepción de notificaciones push en ninguno de los roles.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Crear una solicitud de viáticos.<br>2. Verificar la notificación push en la cuenta del solicitante y del supervisor.<br>3. Confirmar que no llega ninguna notificación.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-018 — Formulario de valoración de hotel accesible en solicitudes no aprobadas o sin hotel registrado</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-018 (caso CP-29)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Es posible registrar una valoración de hotel en solicitudes que no cuentan con hotel registrado o que están canceladas, cuando debería estar disponible únicamente para solicitudes ya aprobadas y con un hotel registrado asociado.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ubicar una solicitud de viático no aprobada o sin hotel registrado.<br>2. Verificar si el botón "Valorar Hotel" está disponible.<br>3. Completar y enviar la valoración.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-019 — Validación de correo duplicado rompe la aplicación sin mostrar alerta</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-019 (caso CP-30)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al intentar crear un usuario con un correo electrónico ya registrado (admin@admin.com), el sistema no muestra ningún mensaje de alerta y la aplicación se rompe, saliendo del formulario.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a Ajustes &gt; Usuarios &gt; Crear usuario.<br>2. Completar todos los campos obligatorios usando un correo ya registrado (admin@admin.com).<br>3. Hacer clic en Crear.<br>4. Observar que no hay alerta y la aplicación sale del formulario.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="footer">ExpenseFlow QA Documentation</div>
 </body>

@@ -79,13 +79,15 @@
 </div>
 
 <div class="informe-content">
-<p><strong>INFORME DE PRUEBAS – EXPENSEFLOW</strong><strong> (</strong><strong>10</strong><strong>.4.2026)</strong></p>
+<h1>Informe de Pruebas — ExpenseFlow (10.4.2026)</h1>
 <p><strong>Objetivo de las pruebas</strong></p>
 <p>Verificar el correcto funcionamiento de los módulos que componen el sistema ExpenseFlow, asegurando que:</p>
-<p>Los flujos de creación, aprobación y cancelación de solicitudes operen según lo esperado.</p>
-<p>Los módulos administrativos (departamentos, usuarios, zonas, hoteles, tipos de trámite, presupuestos) permitan la gestión completa de los datos.</p>
-<p>Las integraciones (correos electrónicos, notificaciones push, sincronización con Profit) funcionen adecuadamente.</p>
-<p>Las validaciones de (fechas, rangos de calificación, campos obligatorios, filtrado) se apliquen correctamente.</p>
+<ul>
+<li>Los flujos de creación, aprobación y cancelación de solicitudes operen según lo esperado.</li>
+<li>Los módulos administrativos (departamentos, usuarios, zonas, hoteles, tipos de trámite, presupuestos) permitan la gestión completa de los datos.</li>
+<li>Las integraciones (correos electrónicos, notificaciones push, sincronización con Profit) funcionen adecuadamente.</li>
+<li>Las validaciones (fechas, rangos de calificación, campos obligatorios, filtrado) se apliquen correctamente.</li>
+</ul>
 <p><strong>Resumen de resultados</strong></p>
 <table>
 <thead>
@@ -113,370 +115,2157 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Detalle de casos de prueba por módulo</strong></p>
-<p><strong>1. Login</strong></p>
-<p><strong>CP0</strong><strong>1</strong><strong> – Inicio de sesión exitoso</strong></p>
-<p><strong>Descripción:</strong> Verificar que un usuario registrado pueda iniciar sesión con credenciales válidas.</p>
-<p><strong>Precondiciones:</strong> Usuario registrado y cuenta activa. Credenciales: admin@admin.com / 123456</p>
-<p><strong>Pasos:</strong></p>
-<p>Acceder a https://expenseflow.example.com/admin/login</p>
-<p>Introducir correo electrónico y contraseña</p>
-<p>Hacer clic en "Entrar"</p>
-<p><strong>Resultado esperado:</strong> Redirección al Dashboard con contenido del perfil.</p>
-<p><strong>Resultado obtenido:</strong> Carga correctamente al Dashboard. La sesión se mantiene al cerrar la página inesperadamente indiferentemente si se tiene tildada o no la opción recuérdame. </p>
-<p><strong>Captura</strong><strong>:</strong> NA</p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>CP0</strong><strong>2</strong><strong> – Cierre de sesión (Logout)</strong></p>
-<p><strong>Descripción:</strong> Verificar que el botón "Salir" cierre la sesión y redirija al login.</p>
-<p><strong>Precondiciones:</strong> Usuario autenticado en el Dashboard.</p>
-<p><strong>Pasos:</strong></p>
-<p>Hacer clic en "Salir"</p>
-<p><strong>Resultado esperado:</strong> Desconexión y redirección a pantalla de login; no se puede volver al Dashboard con botón atrás.</p>
-<p><strong>Resultado obtenido:</strong><strong> </strong>Se realiza acción de logout, se observa “Alerta estas a punto de enviar una información no segura “.</p>
-<p><strong>C</strong><strong>aptura:</strong>  </p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>CP0</strong><strong>3</strong><strong> – Cambio de contraseña desde Dashboard</strong></p>
-<p><strong>Descripción:</strong> Verificar que el botón "Actualizar contraseña" despliegue el formulario correspondiente.</p>
-<p><strong>Precondiciones:</strong> Usuario autenticado.</p>
-<p><strong>Pasos:</strong></p>
-<p>En el Dashboard, hacer clic en "Actualizar contraseña"</p>
-<p><strong>Resultado esperado:</strong> Se muestra el formulario para actualizar la contraseña y validación de nueva contraseña debe ser exactamente 9 caracteres, incluir letras, números y símbolos. </p>
-<p><strong>Resultado obtenido:</strong> Funciona correctamente la validación de contraseña. </p>
-<p><strong>Captura</strong><strong>:</strong> NA</p>
-<p><strong>Estado:</strong> Correcto</p>
-<p>**
-<strong>**2. Administración – Aprobación de viáticos</strong></p>
-<p><strong>CP0</strong><strong>4</strong><strong>– Visualización de </strong><strong>KPIs</strong><strong> en Dashboard</strong></p>
-<p><strong>Descripción:</strong> Verificar que los indicadores "Aprobados", "Por aprobar" y "Rechazados" se muestren y redirijan correctamente.</p>
-<p><strong>Precondiciones:</strong> Usuario autenticado, existencia de solicitudes.</p>
-<p><strong>Pasos:</strong></p>
-<p>Observar los tres KPI en el Dashboard.</p>
-<p>Hacer clic en cada uno.</p>
-<p><strong>Resultado esperado:</strong> Los valores son visibles</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>Captura</strong><strong>:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP0</strong><strong>5</strong><strong> – Tabla de aprobación de viáticos (estados y exportación)</strong></p>
-<p><strong>Descripción:</strong> Validar que la tabla muestre los estados "Rechazados", "Cancelados", "Por aprobar analista" y "Aprobado por sup. y analista", y permita exportar a Excel.</p>
-<p><strong>Precondiciones:</strong> Usuario con permisos, solicitudes en diferentes estados.</p>
-<p><strong>Pasos:</strong></p>
-<p>Acceder a "Aprobación de viáticos"</p>
-<p>Observar opciones de filtro y tabla.</p>
-<p>Exportar selección múltiple a Excel.</p>
-<p><strong>Resultado esperado:</strong> Tabla correcta, exportación funcional.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>Captura</strong><strong>:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP0</strong><strong>6</strong><strong> – Detalle y observaciones de una solicitud</strong></p>
-<p><strong>Descripción:</strong> Verificar que al seleccionar un viático se muestren detalles y observaciones.</p>
-<p><strong>Precondiciones:</strong> Solicitudes cargadas en la tabla.</p>
-<p><strong>Pasos:</strong></p>
-<p>Hacer clic en un registro de la tabla de aprobación.</p>
-<p><strong>Resultado esperado:</strong> Se despliega el detalle con observaciones.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP0</strong><strong>7</strong><strong> – Filtros optimizados (múltiples supervisores, múltiples departamentos, Local/Foráneo, rango de fechas con hoy)</strong></p>
-<p><strong>Descripción:</strong> Validar que los filtros permitan selección múltiple y que el día de hoy se incluya en rangos.</p>
-<p><strong>Precondiciones:</strong> Usuario autenticado, solicitudes variadas.</p>
-<p><strong>Pasos:</strong></p>
-<p>Aplicar filtro por 2 supervisores.</p>
-<p>Aplicar filtro por 3 departamentos.</p>
-<p>Filtrar por "Foráneo".</p>
-<p>Filtrar fecha desde "hoy" hasta "hoy".</p>
-<p><strong>Resultado esperado:</strong> Los listados muestran las solicitudes correctas.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>3. Gestión</strong></p>
-<p><strong>3.1 Solicitud de viáticos</strong></p>
-<p><strong>CP0</strong><strong>8</strong><strong> – Creación completa de solicitud (flujo </strong><strong>wizard</strong><strong>)</strong></p>
-<p><strong>Descripción:</strong> Crear solicitud con zona, fechas, tipo de trámite, al menos un empleado y envío.</p>
-<p><strong>Precondiciones:</strong> Usuario logueado como solicitante.</p>
-<p><strong>Pasos:</strong></p>
-<p>Completar wizard (zona, fechas, tipo trámite).</p>
-<p>Agregar ≥1 empleado.</p>
-<p>Enviar.</p>
-<p><strong>Resultado esperado:</strong> Solicitud creada con estado "Por Aprobar Supervisor". Correo enviado a analista y supervisor.</p>
-<p><strong>Resultado obtenido:</strong>  504 Gateway Time-out </p>
-<p><strong>C</strong><strong>aptura:</strong> </p>
-<p><strong>Estado:</strong> Fallido</p>
-<p><strong>CP0</strong><strong>9</strong><strong> – Validación de fechas incorrectas (salida &gt; retorno)</strong></p>
-<p><strong>Descripción:</strong> Impedir envío cuando fecha de salida es posterior a fecha de retorno.</p>
-<p><strong>Precondiciones:</strong> Usuario autenticado.</p>
-<p><strong>Pasos:</strong></p>
-<p>Seleccionar fecha salida posterior a fecha retorno.</p>
-<p>Intentar enviar.</p>
-<p><strong>Resultado esperado:</strong> Validación impide envío. Mensaje de error claro en español.</p>
-<p><strong>Resultado </strong><strong>obtenido:</strong>NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP</strong><strong>10</strong><strong> – Cálculo automático de logística (alimentación, hospedaje, transporte)</strong></p>
-<p><strong>Descripción:</strong> Al crear solicitud con zona de costos predefinidos, se debe generar tabla de logística con tarifas.</p>
-<p><strong>Precondiciones:</strong> Zona con costos configurados.</p>
-<p><strong>Pasos:</strong></p>
-<p>Crear solicitud con zona que tiene costos predefinidos.</p>
-<p>Ver tabla de logística generada.</p>
-<p><strong>Resultado esperado:</strong> Alimentación/hospedaje/transporte calculados según tarifas.</p>
-<p><strong>Resultado obtenido:</strong> Bloqueado por falla en CP08</p>
-<p><strong>C</strong><strong>aptura:</strong> N/A</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP1</strong><strong>1</strong><strong> – Flujo de aprobación (</strong><strong>workflow</strong><strong>)</strong></p>
-<p><strong>Descripción:</strong> Validar transiciones de estado:</p>
-<p><strong>Precondiciones:</strong> Solicitud en estado correspondiente.</p>
-<p><strong>Pasos:</strong></p>
-<p><strong>Resultado esperado:</strong> Cada acción cambia el estado correctamente y envía notificaciones.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP1</strong><strong>2</strong><strong> – Valoración de hotel desde solicitud aprobada</strong></p>
-<p><strong>Descripción:</strong> Calificar hotel con estrellas (1-5) y observación.</p>
-<p><strong>Precondiciones:</strong> Solicitud aprobada y finalizada, asociada a un hotel.</p>
-<p><strong>Pasos:</strong></p>
-<p>Seleccionar estrellas </p>
-<p><strong>Resultado esperado:</strong> Calificación guardada</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP1</strong><strong>3</strong><strong> – Zona horaria (Hora Venezuela)</strong></p>
-<p><strong>Descripción:</strong> Las fechas registradas deben usar hora de Venezuela (-4 UTC).</p>
-<p><strong>Precondiciones:</strong> Crear solicitud a las 2:00 PM UTC (10:00 AM VET).</p>
-<p><strong>Pasos:</strong></p>
-<p>Crear solicitud.</p>
-<p><strong>Resultado esperado:</strong> Muestra formato correcto </p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>3.2 Reportes</strong></p>
-<p><strong>CP1</strong><strong>4</strong><strong> – Visualización de solicitudes por estado (sin aprobar, aprobadas, rechazadas)</strong></p>
-<p><strong>Descripción:</strong> El módulo Reportes debe mostrar tabla clasificada por pestañas.</p>
-<p><strong>Precondiciones:</strong> Solicitudes en diferentes estados.</p>
-<p><strong>Pasos:</strong></p>
-<p>Acceder a "Reportes".</p>
-<p>Clic en pestaña "Rechazados", etc.</p>
-<p><strong>Resultado esperado:</strong> Muestra solo solicitudes del estado seleccionado.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> 
-1. Mejorar redacción </p>
-<p><strong>Estado:</strong>  Bloqueado </p>
-<p><strong>3.3 Histórico de actualización de viáticos</strong></p>
-<p><strong>CP1</strong><strong>5</strong><strong> – Columnas del histórico</strong></p>
-<p><strong>Descripción:</strong> Verificar que la tabla muestre: autorizado por, modificación de status, fecha de actualización, fecha salida, fecha retorno, observaciones.</p>
-<p><strong>Precondiciones:</strong> Existen actualizaciones de solicitudes.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ir a "Histórico de actualización de viáticos".</p>
-<p><strong>Resultado esperado:</strong> Tabla con las columnas especificadas.</p>
-<p><strong>Resultado obtenido:</strong> Se muestra correctamente, con filtros aplicables.</p>
-<p><strong>Evidencia o captura:</strong> </p>
-<ol>
-<li>Mejorar redacción </li>
-</ol>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>3.4 Gastos de departamentos</strong>**
-Bloqueado **</p>
-<p><strong>4. Ajustes</strong></p>
-<p><strong>4.1 Departamentos</strong></p>
-<p><strong>CP1</strong><strong>6</strong><strong> – Visualización de tabla de departamentos</strong></p>
-<p><strong>Descripción:</strong> Mostrar código, departamento, supervisor y presupuesto total.</p>
-<p><strong>Precondiciones:</strong> Departamentos registrados.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ir a "Ajustes → Departamentos".</p>
-<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
-<p><strong>Resultado obtenido:</strong> Correcto.</p>
-<p><strong>C</strong><strong>aptura:</strong> 
-1. Mejorar redacción traducir</p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>CP1</strong><strong>7</strong><strong> – Creación de nuevo departamento</strong></p>
-<p><strong>Descripción:</strong> Crear departamento con código Profit, nombre, supervisor, presupuesto.</p>
-<p><strong>Pasos:</strong></p>
-<p>Clic en "Crear departamento".</p>
-<p>Ingresar datos.</p>
-<p>Guardar (opciones: Crear / Crear y crear otro / Cancelar).</p>
-<p><strong>Resultado esperado:</strong> Departamento creado y visible en listado.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>CP1</strong><strong>8</strong><strong> – Asignación de presupuesto (Budget) a un departamento</strong></p>
-<p><strong>Descripción:</strong> Desde edición del departamento, asignar monto presupuestario.</p>
-<p><strong>Precondiciones:</strong> Departamento existente.</p>
-<p><strong>Pasos:</strong></p>
-<p>Clic en "Crear Budget".</p>
-<p>Ingresar monto (ej. 500,000).</p>
-<p>Guardar.</p>
-<p><strong>Resultado esperado:</strong> Presupuesto asignado y actualizado en tabla.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>4.2 Tipo de trámites</strong></p>
-<p><strong>CP1</strong><strong>9</strong><strong> – Visualización de tabla de tipos de trámite</strong></p>
-<p><strong>Descripción:</strong> La tabla debe mostrar "Tipo de trámite" y "Fecha de creación".</p>
-<p><strong>Precondiciones:</strong> Tipos de trámite existentes.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ir a "Ajustes → Tipo de trámites".</p>
-<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
-<p><strong>Resultado obtenido:</strong> Tramite Creado correctamente </p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>CP</strong><strong>20</strong><strong> – Creación de nuevo tipo de trámite</strong></p>
-<p><strong>Descripción:</strong> Crear tipo de trámite con campos "Tipo de trámite" y "Traslado" (Local/Foráneo). Usar botones Create, Create &amp; create another, Cancel.</p>
-<p><strong>Precondiciones:</strong> Usuario con permisos.</p>
-<p><strong>Pasos:</strong></p>
-<p>Clic en "New tipo tramite".</p>
-<p>Completar "Tipo de Tramite<em>" y "Traslado</em>".</p>
-<p>Probar las 2 acciones de guardado.</p>
-<p><strong>Resultado esperado:</strong>  Validación de campos obligatorios. Al guardar, el registro aparece en el listado. La opción "Crear y crear otro" permite generar un nuevo trámite y restablece el formulario</p>
-<p><strong>Resultado obtenido:</strong> Correcto. Se creó trámite con Traslado "Foráneo" y "Local"</p>
-<p><strong>C</strong><strong>aptura:</strong> 
-1.Traducir alerta</p>
-<p><strong>Estado:</strong> Correcto (sugerencia: Agregar validación para evitar registros duplicados)</p>
-<p>**
-<strong>**4.3 Usuarios</strong></p>
-<p><strong>CP21 – Visualización de tabla de usuarios</strong></p>
-<p><strong>Descripción:</strong> La tabla debe mostrar cédula, nombre, apellido, empresa, departamento y rol.</p>
-<p><strong>Precondiciones:</strong> Usuarios registrados.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ir a "Ajustes → Usuarios".</p>
-<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
-<p><strong>Resultado obtenido:</strong> Correcto. Se sugiere agregar buscador.</p>
-<p><strong>C</strong><strong>aptura:</strong> 
-1. Traducir </p>
-<p><strong>Estado:</strong> Correcto</p>
-<p>**CP22 – Creación de usuario **</p>
-<p><strong>Descripción:</strong> Crear usuario con campos: Nombre<em>, Apellido</em>, Cédula, Rol, Empresa, Departamento<em>, Correo Electrónico, Contraseña</em>. Usar botones Create, Create &amp; create another, Cancel.</p>
-<p><strong>Precondiciones:</strong> Permisos de administración.</p>
-<p><strong>Pasos:</strong></p>
-<p>Clic en "Crear usuario".</p>
-<p>Completar todos los campos.</p>
-<p>Probar las tres acciones.</p>
-<p><strong>Resultado esperado:</strong> Usuario creado y visible en tabla; validación de campos obligatorios.</p>
-<p><strong>Resultado obtenido:</strong> &gt;504 Gateway Time-out</p>
-<p><strong>Captura</strong><strong>:</strong> </p>
-<p><strong>Estado:</strong> Fallido</p>
-<p><strong>CP2</strong><strong>3</strong><strong> – Crear nuevo rol</strong>
-• <strong>Descripción:</strong> Crear un nuevo rol de usuario desde el panel de administración (Ajustes → Roles).
-• <strong>Precondiciones:</strong> Usuario autenticado con permisos de administrador.
-• <strong>Pasos:</strong></p>
-<p>Navegar a Ajustes → Roles.</p>
-<p>Hacer clic en el botón “Crear rol” (o “Create”).</p>
-<p>Completar los campos obligatorios: Name<em> (ej. “QA”), Description</em> (ej. “ROL DE PRUEBA”).</p>
-<p>Hacer clic en el botón “Create” (o “Crear”).</p>
-<p>• <strong>Resultado esperado:</strong> El rol se crea exitosamente 
-• <strong>Resultado obtenido:</strong> Al intentar crear el rol, el sistema arroja error <em>Internal</em><em> Server Error</em>: “Select field [data.role_id] must have a [createOptionUsing()] closure set.” 
-• <strong>Captura:</strong> </p>
-<p><strong>CP2</strong><strong>4</strong><strong> – Edición de usuario</strong></p>
-<p><strong>Descripción:</strong> Modificar rol u otros campos de un usuario existente.</p>
-<p><strong>Pasos:</strong></p>
-<p>En listado, clic en "Edit".</p>
-<p>Modificar datos.</p>
-<p>Guardar.</p>
-<p><strong>Resultado esperado:</strong> Cambios guardados</p>
-<p><strong>Resultado obtenido:</strong> Correcto.</p>
-<p><strong>C</strong><strong>aptura:</strong> 
-pendiente verificar si los datos se están guardando correctamente en la tabla. </p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>CP2</strong><strong>5</strong><strong> – Validación de correo duplicado en creación de usuario</strong></p>
-<p><strong>Descripción:</strong> No permitir crear usuario con correo ya registrado.</p>
-<p><strong>Precondiciones:</strong> Existe usuario con correo admin@admin.com.</p>
-<p><strong>Pasos:</strong></p>
-<p>Crear nuevo usuario.</p>
-<p>Ingresar admin@admin.com en campo Correo.</p>
-<p>Intentar guardar.</p>
-<p><strong>Resultado esperado:</strong> Mensaje de error claro (ej. "El correo electrónico ya existe") y no se crea.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p><strong>4.4 Zonas</strong></p>
-<p><strong>CP2</strong><strong>6</strong><strong> – Visualización de tabla de zonas</strong></p>
-<p><strong>Descripción:</strong> La tabla debe mostrar "Zona" y "Fecha de creación".</p>
-<p><strong>Precondiciones:</strong> Zonas registradas.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ir a "Ajustes → Zonas".</p>
-<p><strong>Resultado esperado:</strong> Columnas correctas.</p>
-<p><strong>Resultado obtenido:</strong> Internal Server Error status 500 </p>
-<p><strong>C</strong><strong>aptura:</strong> </p>
-<p><strong>Estado:</strong> Fallido</p>
-<p><strong>CP2</strong><strong>7</strong><strong> – Creación de nueva zona</strong></p>
-<p><strong>Descripción:</strong> Crear zona con nombre y descripción.</p>
-<p><strong>Pasos:</strong></p>
-<p>Clic en "Crear Zona".</p>
-<p>Completar "Zona" y "Descripción".</p>
-<p>Guardar.</p>
-<p><strong>Resultado esperado:</strong> Zona creada y visible en tabla; validación de campos obligatorios.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Bloqueado</p>
-<p>**4.5 Hoteles **</p>
-<p><strong>CP2</strong><strong>8</strong><strong> – Visualización de tabla de hoteles</strong></p>
-<p><strong>Descripción:</strong> La tabla debe mostrar zona, hotel, dirección y beneficios (con íconos sí/no).</p>
-<p><strong>Precondiciones:</strong> Hoteles registrados.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ir a "Ajustes → Hoteles".</p>
-<p><strong>Resultado esperado:</strong> Columnas correctas y beneficios visibles.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>CP2</strong><strong>9</strong>**– Creación de hotel **</p>
-<p><strong>Descripción:</strong> Crear hotel con todos los campos: zona, datos generales, bancarios, beneficios Toggles (desayuno, wifi, etc.), tarifas.</p>
-<p><strong>Pasos:</strong></p>
-<p>Clic en "Crear lista de hoteles".</p>
-<p>Completar formulario.</p>
-<p>Guardar.</p>
-<p><strong>Resultado esperado:</strong> Hotel registrado, aparece en tabla con beneficios seleccionados.</p>
-<p><strong>Resultado obtenido:</strong> Correcto.</p>
-<p><strong>C</strong><strong>aptura:</strong> </p>
-<p><strong>Estado:</strong> Correcto</p>
-<p><strong>CP</strong><strong>30</strong><strong> – Edición de hoteles (activar/desactivar beneficios)</strong></p>
-<p><strong>Descripción:</strong> Modificar beneficios de un hotel existente y ver reflejo en tabla.</p>
-<p><strong>Pasos:</strong></p>
-<p>Editar un hotel.</p>
-<p>Activar un beneficio nuevo, desactivar uno existente.</p>
-<p>Guardar.</p>
-<p><strong>Resultado esperado:</strong> Guardar edición.</p>
-<p><strong>Resultado obtenido:</strong> Correcto, se sugiere que al editar y guardar los cambios  se regrese al listado de hoteles. actualmente no se cierra el formulario de edición. </p>
-<p><strong>Evidencia o captura:</strong> NA</p>
-<p><strong>Estado:</strong> Correcto </p>
-<p><strong>CP3</strong><strong>1</strong><strong> – Importación masiva de hoteles desde Excel</strong></p>
-<p><strong>Descripción:</strong> Subir archivo .xlsx con columnas correctas, revisar datos en wizard editable y confirmar importación.</p>
-<p><strong>Precondiciones:</strong> Archivo Excel válido.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ir a "Importar Hoteles".</p>
-<p>Subir archivo.</p>
-<p>Revisar y editar datos si es necesario.</p>
-<p>Confirmar.</p>
-<p><strong>Resultado esperado:</strong> Hoteles insertados en BD. Mensaje de error si columnas incorrectas.</p>
-<p><strong>Resultado obtenido:</strong> NA</p>
-<p><strong>C</strong><strong>aptura:</strong> NA</p>
-<p><strong>Estado:</strong> No ejecutado</p>
+<hr />
+<h2>1. Login</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP01</td>
+<td>Verificar que un usuario registrado pueda iniciar sesión con credenciales válidas.</td>
+<td>Redirección al Dashboard con contenido del perfil.</td>
+<td>Carga correctamente al Dashboard.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP02</td>
+<td>Verificar que el botón "Salir" cierre la sesión y redirija al login.</td>
+<td>Desconexión y redirección a pantalla de login; no se puede volver al Dashboard con el botón atrás.</td>
+<td>Se realiza el logout; se observa la alerta del navegador "Estás a punto de enviar una información no segura".</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP03</td>
+<td>Verificar que el botón "Actualizar contraseña" despliegue el formulario correspondiente.</td>
+<td>Se muestra el formulario para actualizar la contraseña; validación de nueva contraseña de exactamente 9 caracteres, con letras, números y símbolos.</td>
+<td>Funciona correctamente la validación de contraseña.</td>
+<td>Correcto</td>
+</tr>
+</tbody>
+</table>
+<h4>CP01 — Inicio de sesión exitoso</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario registrado y cuenta activa. Credenciales: admin@admin.com / 123456</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Acceder a https://expenseflow.example.com/admin/login.<br>2. Introducir correo electrónico y contraseña.<br>3. Hacer clic en "Entrar".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Redirección al Dashboard con contenido del perfil.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Carga correctamente al Dashboard. La sesión se mantiene al cerrar la página inesperadamente, independientemente de si se tiene marcada o no la opción "recuérdame".</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-001.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP02 — Cierre de sesión (Logout)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado en el Dashboard.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en "Salir".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Desconexión y redirección a pantalla de login; no se puede volver al Dashboard con el botón atrás.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se realiza la acción de logout; se observa la alerta "Estás a punto de enviar una información no segura".</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-002.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP03 — Cambio de contraseña desde Dashboard</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. En el Dashboard, hacer clic en "Actualizar contraseña".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se muestra el formulario para actualizar la contraseña y validación de nueva contraseña debe ser exactamente 9 caracteres, incluir letras, números y símbolos.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Funciona correctamente la validación de contraseña.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Administración – Aprobación de viáticos</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP04</td>
+<td>Verificar que los indicadores "Aprobados", "Por aprobar" y "Rechazados" se muestren y redirijan correctamente.</td>
+<td>Los valores son visibles.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP05</td>
+<td>Validar que la tabla muestre los estados "Rechazados", "Cancelados", "Por aprobar analista" y "Aprobado por sup. y analista", y permita exportar a Excel.</td>
+<td>Tabla correcta, exportación funcional.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP06</td>
+<td>Verificar que al seleccionar un viático se muestren detalles y observaciones.</td>
+<td>Se despliega el detalle con observaciones.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP07</td>
+<td>Validar que los filtros permitan selección múltiple (supervisores, departamentos, Local/Foráneo) y que el día de hoy se incluya en rangos de fecha.</td>
+<td>Los listados muestran las solicitudes correctas.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+</tbody>
+</table>
+<h4>CP04 — Visualización de KPIs en Dashboard</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado, existencia de solicitudes.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Observar los tres KPI en el Dashboard.<br>2. Hacer clic en cada uno.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Los valores son visibles.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-003.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP05 — Tabla de aprobación de viáticos (estados y exportación)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario con permisos, solicitudes en diferentes estados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Acceder a "Aprobación de viáticos".<br>2. Observar opciones de filtro y tabla.<br>3. Exportar selección múltiple a Excel.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Tabla correcta, exportación funcional.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-003.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP06 — Detalle y observaciones de una solicitud</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Solicitudes cargadas en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Hacer clic en un registro de la tabla de aprobación.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Se despliega el detalle con observaciones.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-003.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP07 — Filtros optimizados (múltiples supervisores, múltiples departamentos, Local/Foráneo, rango de fechas con hoy)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado, solicitudes variadas.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Aplicar filtro por 2 supervisores.<br>2. Aplicar filtro por 3 departamentos.<br>3. Filtrar por "Foráneo".<br>4. Filtrar fecha desde "hoy" hasta "hoy".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Los listados muestran las solicitudes correctas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-003.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Gestión</h2>
+<h3>3.1 Solicitud de viáticos</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP08</td>
+<td>Crear solicitud con zona, fechas, tipo de trámite, al menos un empleado y envío (flujo wizard).</td>
+<td>Solicitud creada con estado "Por Aprobar Supervisor". Correo enviado a analista y supervisor.</td>
+<td>504 Gateway Time-out.</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP09</td>
+<td>Impedir envío cuando la fecha de salida es posterior a la fecha de retorno.</td>
+<td>Validación impide el envío. Mensaje de error claro en español.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP10</td>
+<td>Calcular automáticamente la logística (alimentación, hospedaje, transporte) según tarifas de zona.</td>
+<td>Alimentación/hospedaje/transporte calculados según tarifas.</td>
+<td>Bloqueado por falla en CP08.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP11</td>
+<td>Validar las transiciones de estado del flujo de aprobación (workflow).</td>
+<td>Cada acción cambia el estado correctamente y envía notificaciones.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP12</td>
+<td>Calificar hotel con estrellas (1-5) y observación desde una solicitud aprobada y finalizada.</td>
+<td>Calificación guardada.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP13</td>
+<td>Verificar que las fechas registradas usen la hora de Venezuela (-4 UTC).</td>
+<td>Se muestra el formato de hora correcto.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+</tbody>
+</table>
+<h4>CP08 — Creación completa de solicitud (flujo wizard)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario logueado como solicitante.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Completar wizard (zona, fechas, tipo trámite).<br>2. Agregar al menos un empleado.<br>3. Enviar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Solicitud creada con estado "Por Aprobar Supervisor". Correo enviado a analista y supervisor.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>504 Gateway Time-out.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-004.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP09 — Validación de fechas incorrectas (salida &gt; retorno)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Seleccionar fecha de salida posterior a fecha de retorno.<br>2. Intentar enviar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Validación impide el envío. Mensaje de error claro en español.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Caso no ejecutado; ver BUG-004 (el fallo de CP08 condiciona la ejecución de la suite de este módulo).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP10 — Cálculo automático de logística (alimentación, hospedaje, transporte)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Zona con costos configurados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Crear solicitud con zona que tiene costos predefinidos.<br>2. Ver tabla de logística generada.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Alimentación/hospedaje/transporte calculados según tarifas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Bloqueado por falla en CP08.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-004 (cascada explícita desde CP08).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP11 — Flujo de aprobación (workflow)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Solicitud en estado correspondiente.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>No se pudo ejecutar; depende de contar con una solicitud creada (ver BUG-004).</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Cada acción cambia el estado correctamente y envía notificaciones.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-004 (cascada probable desde CP08).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP12 — Valoración de hotel desde solicitud aprobada</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Solicitud aprobada y finalizada, asociada a un hotel.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Seleccionar estrellas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Calificación guardada.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-004 (cascada probable desde CP08).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP13 — Zona horaria (hora Venezuela)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Crear solicitud a las 2:00 PM UTC (10:00 AM VET).</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Crear solicitud.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Muestra el formato de hora correcto.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-004 (cascada probable desde CP08).</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Reportes</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP14</td>
+<td>Verificar que el módulo Reportes muestre la tabla clasificada por pestañas (sin aprobar, aprobadas, rechazadas).</td>
+<td>Muestra solo las solicitudes del estado seleccionado.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+</tbody>
+</table>
+<h4>CP14 — Visualización de solicitudes por estado (sin aprobar, aprobadas, rechazadas)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Solicitudes en diferentes estados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Acceder a "Reportes".<br>2. Hacer clic en la pestaña "Rechazados", etc.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Muestra solo las solicitudes del estado seleccionado.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>Nota interna de redacción pendiente de mejora.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-005.</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Histórico de actualización de viáticos</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP15</td>
+<td>Verificar que la tabla muestre: autorizado por, modificación de status, fecha de actualización, fecha salida, fecha retorno, observaciones.</td>
+<td>Tabla con las columnas especificadas.</td>
+<td>Se muestra correctamente, con filtros aplicables.</td>
+<td>Bloqueado*</td>
+</tr>
+</tbody>
+</table>
+<p>* Inconsistencia en la fuente original: el "Resultado Obtenido" describe un comportamiento correcto, pero el campo "Estado" quedó registrado como "Bloqueado". Se preserva el valor tal como está documentado, sin asumir cuál de los dos campos es el correcto; se recomienda confirmar con el ambiente real antes de reclasificar este caso.</p>
+<h4>CP15 — Columnas del histórico</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Existen actualizaciones de solicitudes.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Histórico de actualización de viáticos".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Tabla con las columnas especificadas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Se muestra correctamente, con filtros aplicables.</td>
+</tr>
+<tr>
+<td><strong>Evidencia o captura</strong></td>
+<td>Nota interna de redacción pendiente de mejora.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado (ver nota de inconsistencia arriba)</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Gastos de departamentos</h3>
+<p>Módulo completo bloqueado; no se registraron casos de prueba ejecutados en la fuente original.</p>
+<hr />
+<h2>4. Ajustes</h2>
+<h3>4.1 Departamentos</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP16</td>
+<td>Mostrar código, departamento, supervisor y presupuesto total.</td>
+<td>Columnas correctas.</td>
+<td>Correcto.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP17</td>
+<td>Crear departamento con código Profit, nombre, supervisor, presupuesto.</td>
+<td>Departamento creado y visible en el listado.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td>CP18</td>
+<td>Asignar monto presupuestario desde la edición del departamento.</td>
+<td>Presupuesto asignado y actualizado en tabla.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+</tbody>
+</table>
+<h4>CP16 — Visualización de tabla de departamentos</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Departamentos registrados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Ajustes → Departamentos".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Columnas correctas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Correcto.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>Nota interna de redacción/traducción pendiente de mejora.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP17 — Creación de nuevo departamento</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Clic en "Crear departamento".<br>2. Ingresar datos.<br>3. Guardar (opciones: Crear / Crear y crear otro / Cancelar).</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Departamento creado y visible en listado.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-006.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP18 — Asignación de presupuesto (Budget) a un departamento</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Departamento existente.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Clic en "Crear Budget".<br>2. Ingresar monto (ej. 500,000).<br>3. Guardar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Presupuesto asignado y actualizado en tabla.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-006.</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Tipo de trámites</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP19</td>
+<td>La tabla debe mostrar "Tipo de trámite" y "Fecha de creación".</td>
+<td>Columnas correctas.</td>
+<td>Trámite creado correctamente.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP20</td>
+<td>Crear tipo de trámite con los campos "Tipo de trámite" y "Traslado" (Local/Foráneo).</td>
+<td>Validación de campos obligatorios; el registro aparece en el listado; "Crear y crear otro" restablece el formulario.</td>
+<td>Correcto; se creó el trámite con Traslado "Foráneo" y "Local".</td>
+<td>Correcto (sugerencia: validación de duplicados)</td>
+</tr>
+</tbody>
+</table>
+<h4>CP19 — Visualización de tabla de tipos de trámite</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Tipos de trámite existentes.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Ajustes → Tipo de trámites".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Columnas correctas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Trámite creado correctamente.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP20 — Creación de nuevo tipo de trámite</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario con permisos.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Clic en "New tipo tramite".<br>2. Completar "Tipo de Trámite<em>" y "Traslado</em>".<br>3. Probar las 2 acciones de guardado.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Validación de campos obligatorios. Al guardar, el registro aparece en el listado. La opción "Crear y crear otro" permite generar un nuevo trámite y restablece el formulario.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Correcto. Se creó el trámite con Traslado "Foráneo" y "Local".</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>Pendiente traducir alerta.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto (sugerencia: agregar validación para evitar registros duplicados)</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-007 (alerta no traducida) y BUG-008 (falta validación de duplicados).</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 Usuarios</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP21</td>
+<td>La tabla debe mostrar cédula, nombre, apellido, empresa, departamento y rol.</td>
+<td>Columnas correctas.</td>
+<td>Correcto; se sugiere agregar buscador.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP22</td>
+<td>Crear usuario con campos: Nombre<em>, Apellido</em>, Cédula, Rol, Empresa, Departamento<em>, Correo Electrónico, Contraseña</em>.</td>
+<td>Usuario creado y visible en tabla; validación de campos obligatorios.</td>
+<td>504 Gateway Time-out.</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP23</td>
+<td>Crear un nuevo rol de usuario desde Ajustes → Roles.</td>
+<td>El rol se crea exitosamente.</td>
+<td>Internal Server Error: "Select field [data.role_id] must have a [createOptionUsing()] closure set."</td>
+<td>Fallido*</td>
+</tr>
+<tr>
+<td>CP24</td>
+<td>Modificar rol u otros campos de un usuario existente.</td>
+<td>Cambios guardados.</td>
+<td>Correcto.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP25</td>
+<td>No permitir crear usuario con correo ya registrado.</td>
+<td>Mensaje de error claro (ej. "El correo electrónico ya existe") y no se crea.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+</tbody>
+</table>
+<p>* Estado no indicado explícitamente en la fuente original para CP23; se clasifica como "Fallido" por el Internal Server Error devuelto en el Resultado Obtenido.</p>
+<h4>CP21 — Visualización de tabla de usuarios</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuarios registrados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Ajustes → Usuarios".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Columnas correctas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Correcto. Se sugiere agregar buscador.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>Pendiente traducir.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-009 (encabezados no traducidos). Sugerencia de buscador registrada como mejora, no como defecto.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP22 — Creación de usuario</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Permisos de administración.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Clic en "Crear usuario".<br>2. Completar todos los campos.<br>3. Probar las tres acciones (Crear / Crear y crear otro / Cancelar).</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Usuario creado y visible en tabla; validación de campos obligatorios.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>504 Gateway Time-out.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-010.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP23 — Crear nuevo rol</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Usuario autenticado con permisos de administrador.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Navegar a Ajustes → Roles.<br>2. Hacer clic en el botón "Crear rol" (o "Create").<br>3. Completar los campos obligatorios: Name<em> (ej. "QA"), Description</em> (ej. "ROL DE PRUEBA").<br>4. Hacer clic en el botón "Create" (o "Crear").</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>El rol se crea exitosamente.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Al intentar crear el rol, el sistema arroja error <em>Internal Server Error</em>: "Select field [data.role_id] must have a [createOptionUsing()] closure set."</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido (ver nota de inferencia arriba)</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-011.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP24 — Edición de usuario</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. En listado, clic en "Edit".<br>2. Modificar datos.<br>3. Guardar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Cambios guardados.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Correcto.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>Pendiente verificar si los datos se están guardando correctamente en la tabla.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Verificación de persistencia de datos pendiente de confirmar (no se reporta como defecto confirmado).</td>
+</tr>
+</tbody>
+</table>
+<h4>CP25 — Validación de correo duplicado en creación de usuario</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Existe usuario con correo admin@admin.com.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Crear nuevo usuario.<br>2. Ingresar admin@admin.com en campo Correo.<br>3. Intentar guardar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Mensaje de error claro (ej. "El correo electrónico ya existe") y no se crea.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-012.</td>
+</tr>
+</tbody>
+</table>
+<h3>4.4 Zonas</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP26</td>
+<td>La tabla debe mostrar "Zona" y "Fecha de creación".</td>
+<td>Columnas correctas.</td>
+<td>Internal Server Error (500).</td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td>CP27</td>
+<td>Crear zona con nombre y descripción.</td>
+<td>Zona creada y visible en tabla; validación de campos obligatorios.</td>
+<td>No ejecutado.</td>
+<td>Bloqueado</td>
+</tr>
+</tbody>
+</table>
+<h4>CP26 — Visualización de tabla de zonas</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Zonas registradas.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Ajustes → Zonas".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Columnas correctas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Internal Server Error, status 500.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-013.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP27 — Creación de nueva zona</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Clic en "Crear Zona".<br>2. Completar "Zona" y "Descripción".<br>3. Guardar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Zona creada y visible en tabla; validación de campos obligatorios.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Bloqueado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-014 (posible cascada del error 500 de CP26, no confirmado explícitamente en la fuente).</td>
+</tr>
+</tbody>
+</table>
+<h3>4.5 Hoteles</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP28</td>
+<td>La tabla debe mostrar zona, hotel, dirección y beneficios (con íconos sí/no).</td>
+<td>Columnas correctas y beneficios visibles.</td>
+<td>No ejecutado.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP29</td>
+<td>Crear hotel con todos los campos: zona, datos generales, bancarios, beneficios (toggles), tarifas.</td>
+<td>Hotel registrado, aparece en tabla con beneficios seleccionados.</td>
+<td>Correcto.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP30</td>
+<td>Modificar beneficios de un hotel existente y ver reflejo en tabla.</td>
+<td>Guardar edición.</td>
+<td>Correcto, se sugiere que al editar y guardar los cambios se regrese al listado de hoteles; actualmente no se cierra el formulario de edición.</td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td>CP31</td>
+<td>Subir archivo .xlsx con columnas correctas, revisar datos en wizard editable y confirmar importación.</td>
+<td>Hoteles insertados en BD. Mensaje de error si columnas incorrectas.</td>
+<td>No ejecutado.</td>
+<td>No ejecutado</td>
+</tr>
+</tbody>
+</table>
+<h4>CP28 — Visualización de tabla de hoteles</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Hoteles registrados.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Ajustes → Hoteles".</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Columnas correctas y beneficios visibles.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP29 — Creación de hotel</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Clic en "Crear lista de hoteles".<br>2. Completar formulario.<br>3. Guardar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Hotel registrado, aparece en tabla con beneficios seleccionados.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Correcto.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4>CP30 — Edición de hoteles (activar/desactivar beneficios)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Editar un hotel.<br>2. Activar un beneficio nuevo, desactivar uno existente.<br>3. Guardar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Guardar edición.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Correcto; se sugiere que al editar y guardar los cambios se regrese al listado de hoteles. Actualmente no se cierra el formulario de edición.</td>
+</tr>
+<tr>
+<td><strong>Evidencia o captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Correcto</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-015.</td>
+</tr>
+</tbody>
+</table>
+<h4>CP31 — Importación masiva de hoteles desde Excel</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precondiciones</strong></td>
+<td>Archivo Excel válido.</td>
+</tr>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ir a "Importar Hoteles".<br>2. Subir archivo.<br>3. Revisar y editar datos si es necesario.<br>4. Confirmar.</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Hoteles insertados en BD. Mensaje de error si columnas incorrectas.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>No ejecutado</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-016.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Validaciones Transversales</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Descripción</th>
+<th>Resultado Esperado</th>
+<th>Resultado Obtenido</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CP32</td>
+<td>Recorrer todos los módulos y detectar combinaciones de idioma inglés-español en textos, botones, alertas y etiquetas.</td>
+<td>Textos en español, claro y consistente.</td>
+<td>Textos con idiomas mezclados.</td>
+<td>Fallido</td>
+</tr>
+</tbody>
+</table>
+<h4>CP32 — Idioma de interfaz y mensajes</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pasos</strong></td>
+<td>1. Ingresar a cada módulo (Login, Dashboard, Aprobación, Solicitud, Reportes, Histórico, Departamentos, Tipos de trámite, Usuarios, Zonas, Hoteles, Costo viáticos, Términos).</td>
+</tr>
+<tr>
+<td><strong>Resultado Esperado</strong></td>
+<td>Textos en español, claro y consistente.</td>
+</tr>
+<tr>
+<td><strong>Resultado Obtenido</strong></td>
+<td>Textos con idiomas mezclados.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Fallido</td>
+</tr>
+<tr>
+<td><strong>Observaciones</strong></td>
+<td>Ver BUG-017.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Registro de Hallazgos</h2>
+<p>17 hallazgos identificados en la corrida de smoke test.</p>
+<h3>BUG-001 — Persistencia de sesión no respeta la opción "Recuérdame"</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-001 (caso CP01)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>La sesión se mantiene al cerrar inesperadamente la página, independientemente de si la opción "recuérdame" está marcada o no.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar sesión sin marcar "recuérdame".<br>2. Cerrar la página inesperadamente.<br>3. Volver a abrir la URL de login.<br>4. Observar que la sesión se mantiene activa igualmente.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-002 — Alerta del navegador "información no segura" al cerrar sesión</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-002 (caso CP02)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al hacer clic en "Salir", se observa la alerta del navegador "Estás a punto de enviar una información no segura" antes de completar el logout, lo que sugiere un reenvío de formulario o un recurso servido sin HTTPS en ese flujo.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja (el logout finalmente se completa, pero la alerta es inusual y amerita revisión)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar sesión.<br>2. Hacer clic en "Salir".<br>3. Observar la alerta del navegador antes de la redirección al login.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-003 — Módulo de Aprobación de viáticos bloqueado sin causa especificada (CP04-CP07)</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-003 (casos CP04, CP05, CP06, CP07)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Los cuatro casos del módulo "Administración – Aprobación de viáticos" (KPIs del Dashboard, tabla de estados con exportación, detalle de solicitud y filtros optimizados) quedaron con resultado "NA" y Estado "Bloqueado", sin que la fuente original documente la causa del bloqueo. Se registra como hallazgo ambiguo que requiere confirmación: no es posible determinar desde el reporte si se trata de un defecto del módulo o de una limitación/indisponibilidad del ambiente de pruebas en el momento de la ejecución.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>No determinada (ambigüedad a escalar)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>No documentados en la fuente original para estos 4 casos.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente de aclaración</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-004 — Error crítico 504 Gateway Time-out al crear una solicitud de viáticos</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-004 (caso CP08; bloquea en cascada CP09, CP10, CP11, CP12, CP13)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al completar el wizard de creación de solicitud de viáticos (zona, fechas, tipo de trámite, empleados) y enviar, el sistema responde con un error 504 Gateway Time-out, impidiendo la creación de la solicitud. Este fallo bloquea toda la funcionalidad principal del sistema que depende de tener una solicitud creada: CP10 señala explícitamente "Bloqueado por falla en CP08"; CP09, CP11, CP12 y CP13 quedaron igualmente sin ejecutar.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Crítica</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Iniciar sesión como solicitante.<br>2. Completar el wizard de solicitud de viáticos (zona, fechas, tipo de trámite).<br>3. Agregar al menos un empleado.<br>4. Enviar la solicitud.<br>5. Observar el error 504 Gateway Time-out.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-005 — Módulo de Reportes bloqueado sin causa especificada (CP14)</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-005 (caso CP14)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El caso de visualización de solicitudes por estado en el módulo de Reportes quedó con resultado "NA" y Estado "Bloqueado", sin que la fuente original documente la causa.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>No determinada (ambigüedad a escalar)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Acceder a "Reportes".<br>2. Hacer clic en las pestañas de estado (Rechazados, etc.).</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente de aclaración</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-006 — Creación de departamento y asignación de presupuesto bloqueadas sin causa especificada (CP17, CP18)</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-006 (casos CP17, CP18)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Los casos de creación de un nuevo departamento y de asignación de presupuesto (Budget) quedaron con resultado "NA" y Estado "Bloqueado", sin causa documentada en la fuente original.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>No determinada (ambigüedad a escalar)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>CP17: 1. Clic en "Crear departamento". 2. Ingresar datos. 3. Guardar.<br>CP18: 1. Clic en "Crear Budget" para un departamento. 2. Ingresar monto. 3. Guardar.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente de aclaración</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-007 — Alerta no traducida al crear un nuevo tipo de trámite</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-007 (caso CP20)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al crear un nuevo tipo de trámite, se observa una alerta del sistema que no está traducida al español.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a "Tipo de trámites".<br>2. Crear un nuevo tipo de trámite.<br>3. Observar el idioma de la alerta mostrada.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-008 — Ausencia de validación para evitar tipos de trámite duplicados</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-008 (caso CP20)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El sistema permite registrar tipos de trámite duplicados sin advertir al usuario.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a "Tipo de trámites".<br>2. Crear un tipo de trámite con un nombre ya existente.<br>3. Observar que el sistema permite el registro.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-009 — Encabezados de la tabla de Usuarios no traducidos al español</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-009 (caso CP21)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al visualizar la tabla de Usuarios con el idioma de interfaz configurado en español, se observan elementos pendientes de traducir (nota de captura: "Traducir").</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Baja</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a "Ajustes → Usuarios".<br>2. Observar los encabezados y etiquetas de la tabla con el idioma en español.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-010 — Error crítico 504 Gateway Time-out al crear un usuario</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-010 (caso CP22)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al completar el formulario de creación de usuario y confirmar, el sistema responde con un error 504 Gateway Time-out. Comparte el mismo patrón de error de infraestructura que BUG-004 (creación de solicitud de viáticos).</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Crítica</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a Ajustes → Usuarios.<br>2. Clic en "Crear usuario".<br>3. Completar todos los campos.<br>4. Confirmar la creación.<br>5. Observar el error 504 Gateway Time-out.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-011 — Internal Server Error al crear un nuevo rol (role_id sin createOptionUsing)</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-011 (caso CP23)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al intentar crear un nuevo rol desde Ajustes → Roles, el sistema arroja el error <em>Internal Server Error</em>: "Select field [data.role_id] must have a [createOptionUsing()] closure set.", impidiendo la creación del rol.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Navegar a Ajustes → Roles.<br>2. Hacer clic en "Crear rol".<br>3. Completar Name<em> y Description</em>.<br>4. Hacer clic en "Create".<br>5. Observar el Internal Server Error.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-012 — Validación de correo duplicado bloqueada sin causa especificada</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-012 (caso CP25)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El caso de validación de correo duplicado en creación de usuario quedó con resultado "NA" y Estado "Bloqueado", sin causa documentada en la fuente original.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>No determinada (ambigüedad a escalar)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Crear nuevo usuario.<br>2. Ingresar un correo ya registrado (admin@admin.com).<br>3. Intentar guardar.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente de aclaración</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-013 — Internal Server Error (500) al visualizar la tabla de Zonas</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-013 (caso CP26)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al acceder a la tabla de Zonas en Ajustes, el sistema responde con un Internal Server Error, status 500, impidiendo visualizar el listado.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a Ajustes → Zonas.<br>2. Observar el Internal Server Error (500).</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-014 — Creación de zona bloqueada (posible cascada del error 500 de BUG-013)</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-014 (caso CP27)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El caso de creación de nueva zona quedó sin ejecutar (resultado "NA", Estado "Bloqueado"). La fuente original no confirma explícitamente la causa, pero es consistente con una cascada del error 500 reportado en CP26 (BUG-013) sobre el mismo módulo de Zonas.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>No determinada (dependiente de BUG-013)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Clic en "Crear Zona".<br>2. Completar "Zona" y "Descripción".<br>3. Guardar.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente de aclaración</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-015 — El formulario de edición de hotel no se cierra tras guardar los cambios</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-015 (caso CP30)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al editar y guardar los cambios de beneficios de un hotel, el formulario de edición permanece abierto en vez de regresar al listado de hoteles, generando incertidumbre sobre si el guardado fue exitoso.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Editar un hotel existente.<br>2. Activar/desactivar beneficios.<br>3. Guardar.<br>4. Observar que el formulario de edición no se cierra ni regresa al listado.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-016 — Importación masiva de hoteles no ejecutada</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-016 (caso CP31)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>El caso de importación masiva de hoteles desde Excel quedó registrado como "No ejecutado" en la fuente original; no hay evidencia de que se haya corrido, por lo que no se considera un defecto confirmado, sino un caso pendiente de ejecución.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>No aplica (caso no ejecutado, no concluyente)</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ir a "Importar Hoteles".<br>2. Subir archivo .xlsx.<br>3. Revisar y confirmar.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>No ejecutado</td>
+</tr>
+</tbody>
+</table>
+<h3>BUG-017 — Inconsistencia de idioma en toda la interfaz (textos mezclados inglés/español)</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>BUG-017 (caso CP32)</td>
+</tr>
+<tr>
+<td><strong>Descripción</strong></td>
+<td>Al recorrer todos los módulos del sistema, se detectaron textos, botones, alertas y etiquetas en inglés mezclados con español, a pesar de que el idioma de interfaz configurado es español. Ejemplos reportados: "List", "Create", "New tipo tramite", y mensajes de alerta en inglés.</td>
+</tr>
+<tr>
+<td><strong>Severidad</strong></td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Pasos para Reproducir</strong></td>
+<td>1. Ingresar a cada módulo (Login, Dashboard, Aprobación, Solicitud, Reportes, Histórico, Departamentos, Tipos de trámite, Usuarios, Zonas, Hoteles, Costo viáticos, Términos).<br>2. Verificar el idioma de todos los textos, botones y alertas.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Pendiente</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Resumen de Hallazgos Críticos</h2>
 <ul>
-<li>Inconsistencias de idioma </li>
+<li><strong>Error crítico 504 Gateway Time-out</strong> (BUG-004, BUG-010): impide la creación de solicitudes y de usuarios, bloqueando funcionalidad principal del sistema.</li>
+<li><strong>Idioma inconsistente</strong> (BUG-017): textos en inglés mezclados con español (botones, alertas, etiquetas). Ejemplo: "List", "Create", "New tipo tramite", mensajes de alerta en inglés.</li>
 </ul>
-<p><strong>CP32 – Idioma de interfaz y mensajes</strong></p>
-<p><strong>Descripción:</strong> Recorrer todos los módulos y detectar  combinaciones inglés-español.</p>
-<p><strong>Pasos:</strong></p>
-<p>Ingresar a cada módulo (Login, Dashboard, Aprobación, Solicitud, Reportes, Histórico, Departamentos, Tipos de trámite, Usuarios, Zonas, Hoteles, Costo viáticos, Términos).</p>
-<p><strong>Resultado esperado:</strong>  textos en español, claro y consistente.</p>
-<p><strong>Resultado obtenido:</strong> Textos con idiomas mezclados.</p>
-<p><strong>C</strong><strong>aptura:</strong> </p>
-<p>**</p>
-<hr />
-<p><strong>**Estado:</strong> Fallido </p>
-<p>**</p>
-<hr />
-<hr />
-<hr />
-<hr />
-<p><strong><em>*Re</em></strong><em>sumen  </em>***</p>
-<hr />
-<hr />
-<p><strong><em>*Error crítico 504 Gateway Time-</em></strong><em>out</em>*</p>
-<p>Impide la creación de solicitudes </p>
-<p>Bloquea toda la funcionalidad principal del sistema.</p>
-<p>**
-<strong>**Idioma inconsistente</strong></p>
-<p>Textos en inglés mezclados con español (botones, alertas, etiquetas).</p>
-<p>Ejemplo: “List”, “Create”, “New tipo tramite”, mensajes de alerta en inglés.</p>
-<p><strong>Elaborado por:</strong>  Luis Aranguren Analista QA 
-<strong>Fecha:</strong> 2026-04-10</p>
+<p><strong>Elaborado por:</strong> Luis Aranguren — Analista QA
+<strong>Fecha de la corrida:</strong> 2026-04-10</p>
 </div>
 <div class="footer">ExpenseFlow QA Documentation</div>
 </body>
